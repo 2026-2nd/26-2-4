@@ -1,0 +1,44 @@
+{
+  "transaction_complex_keys": 8908,
+  "transaction_rows": 356087,
+  "new_rule_supported_transaction_rows": 106216,
+  "new_rule_supported_keys": 990,
+  "status_before": {
+    "address_name_supported": 104981,
+    "unmatched": 69621,
+    "unique_address_review": 156236,
+    "year_conflict_review": 6234,
+    "ambiguous": 15251,
+    "name_location_review": 3764
+  },
+  "status_after": {
+    "address_name_supported": 104981,
+    "unmatched": 68099,
+    "unique_address_review": 62145,
+    "road_year_name_alias_supported": 33759,
+    "year_conflict_review": 6182,
+    "road_year_parcel_supported": 69811,
+    "name_location_review": 2752,
+    "ambiguous": 5712,
+    "parcel_year_name_supported": 2646
+  },
+  "decisions": {
+    "retained_previous_supported": 104981,
+    "unresolved_insufficient_evidence": 144279,
+    "new_rule_supported": 106216,
+    "unresolved_multiple_supported": 611
+  },
+  "accepted_statuses": [
+    "address_name_supported",
+    "parcel_year_name_supported",
+    "road_year_name_alias_supported",
+    "road_year_parcel_supported"
+  ],
+  "manual_validation_completed": false,
+  "notes": [
+    "No transaction prices used.",
+    "Current source legal-dong/parcel is corroborating evidence, not standalone authoritative cadastral validation.",
+    "Phase/subcomplex/rental conflicts remain review items.",
+    "Existing address_name_supported mappings are retained; possible new conflicts are exposed in candidate_evidence."
+  ]
+}

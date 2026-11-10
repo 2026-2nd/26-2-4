@@ -1,0 +1,48 @@
+"""Write the validation and missingness report from measured backfill results."""
+import json
+from apply_internal_static_assumption import ROOT,REPORT
+def main():
+ s=json.loads((REPORT/'summary.json').read_text(encoding='utf-8'))
+ labels={'household_count':'총세대수','parking_per_household':'세대당 주차대수','heating_type':'난방방식','corridor_type':'복도유형'}
+ text=['# 단지 내부 변수 안정성 가정 검토 및 결측 감소 결과','',
+ '작업일: 2026-11-02. 사용자 요청에 따라 현재 단지정보를 거래기간에 동일하게 적용하는 방법의 유효성을 검토하고, 검증된 역사값과 구분되는 별도 가정 적용본을 생성했다. 모델 학습은 하지 않았다.','',
+ '## 선택 문장의 의미','',
+ '기존의 “주소·명칭·준공연도 충돌을 해결하고 valid_from/to·근거자료를 갖춘 이력표를 확보”한다는 문장은 두 문제를 구분한다. 첫째, 거래를 같은 단지에 올바르게 연결해야 한다. 둘째, 그 단지의 값이 어느 기간에 실제로 유효했는지 확인해야 한다. valid_from/to는 각각 적용 시작일과 종료일(종료일 미포함)이며 등록일·현재 수정일과 같지 않다. 이번 가정은 두 번째 문제를 근사하는 연구 설계 변경이고, 첫 번째 매칭 문제를 해결해 주지는 않는다.','',
+ '## 의견의 타당성 검토','',
+ '**“동일 단지의 구조적 특성이 연구기간에 크게 변하지 않는다”는 조건부 근사 분석은 가능하다. 그러나 같은 아파트·동수라는 사실로 난방·주차까지 불변이라고 입증할 수는 없다.** 복도유형은 일반적으로 구조적 속성에 가까워 안정성 가정의 후보지만, 혼합식 단지에서 개별 동·호실의 복도유형을 확정한 것은 아니다. 재건축·리모델링·증축·동별 구성 차이는 별도 검토가 필요하다.',
+ '[서울시의회 2020년 기후환경본부 업무보고](https://ms.smc.seoul.kr/attach/record/SEOUL/appendix/a10/A0050507.pdf?time=20260430203552)는 보라매삼성 등을 포함한 개별난방 전환을 언급한다. 이는 동일 단지의 난방방식이 바뀔 수 있다는 실제 반례다. 해당 문서만으로 모든 개별 단지의 정확한 전환일은 확정하지 않는다.',
+ '[국토부 정책브리핑의 주차장 증설 안내](https://www.korea.kr/briefing/policyBriefingView.do?newsId=148827044)는 단지 내 다른 용도의 공간을 주차장으로 바꾸는 경우를 설명한다. [상계주공3단지의 서울시 공식 단지 페이지](https://openapt.seoul.go.kr/openApt/index.do?aptCode=A13971502&tr_code=sweb)에도 주차장 증설공사 공고·결과가 있어 변경 가능성을 확인했다. 입찰공고만으로 실제 완공·변경 면수·날짜를 확정하지 않는다. 주거동 수가 같아도 주차면은 늘 수 있다.',
+ '**거래자료에는 과거 총동수 이력이 없고 개별 동 정보도 미공개인 경우가 많다.** 현재 스냅샷에서 양의 동수는 확인했지만 “2020~2026년 내내 동수가 같았다”거나 “개별 거래의 동까지 같은 구조임”을 검증하지 못했다. 이번 적용은 그 조건이 입증되었다는 의미가 아니라 같은 주소·명칭·준공연도로 연결된 단지의 안정성을 가정한 것이다.','',
+ '## 적용 규칙','',
+ '1. 기존 주소·정규화 이름 일치 등급(address_name_supported)만 허용했다. 주소만 일치·이름만 유사·준공연도 충돌·후보 복수 거래는 채우지 않았다.',
+ '2. 후보 사용승인일≤계약일, 후보 사용승인연도=거래 건축연도, 현재 스냅샷의 양의 정수 동수를 요구했다. 준공 이전 거래·동수 누락은 제외했다.',
+ '3. 원천값 자체가 없는 항목은 채우지 않았다. 세대수 0·주차면 0의 의미 미확인, 난방·복도 미입력 등은 원래 결측 정책을 유지했다.',
+ '4. 보라매삼성 난방은 전환 단서가 있어 144개 거래에서 보수적으로 채우지 않았다. 상계주공3단지 주차도 가정 제외 목록에 넣었지만 기존 준공연도 충돌 조건에서 이미 제외되어 이번에 추가로 줄어든 행은 없다. 전체 서울 변경 단지의 전수 조사 완료를 뜻하지 않는다.',
+ '5. 현재 스냅샷 값을 적용한 모든 항목에 `<feature>_basis=assumed_time_invariant`를 기록했다. 실제 확인된 과거 값으로 표시하지 않았다. 가정 근거를 구별할 수 있도록 개별 변수별 provenance를 보존했다.',
+ '6. 기존 기본 컬럼 4개를 가정 적용본에서만 채웠고, 원래 값은 `<feature>_history_verified`에 따로 보존했다. 원래 엄격 이력 CSV는 변경하지 않았다. 총세대수도 기존 명세의 단지 내부 기본 변수이므로 동일 조건으로 채웠으며 새로운 설명변수를 추가하지 않았다.','',
+ '## 결측 감소 실측 결과','',
+ f"분모는 기존 거래 전체 {s['output_rows']:,}행으로 고정했다. 엄격한 역사 기준의 네 기본 컬럼은 모두 결측이었다. 현재 `_snapshot` 참고값을 새로 수집한 것과 혼동하지 않도록 아래는 **기본 컬럼의 가정 채움 전후**를 비교한다.",'',
+ '| 변수 | 적용 전 결측 | 가정으로 채운 행 | 적용 후 결측 | 적용 후 결측률 | 감소 폭 |','|---|---:|---:|---:|---:|---:|']
+ for r in s['missing_comparison']:text.append(f"| {labels[r['feature']]} | {r['before_missing']:,} | {r['missing_reduction']:,} | {r['after_missing']:,} | {100*r['after_missing_rate']:.2f}% | {r['missing_reduction_percentage_points']:.2f}%p |")
+ text += ['',
+ f"적용 조건 통과 {s['eligible_rows']:,}행, 하나 이상 채운 거래 {s['rows_with_any_assumed_value']:,}행, 네 기본 변수 모두 채워진 거래 {s['rows_with_all_four_values']:,}행이다. 각 변수에서 채운 행은 서로 겹치므로 합산해 새 거래 수처럼 해석하지 않는다.",
+ '남은 결측의 가장 큰 이유는 시간이 아니라 단지 식별의 불확실성이다. 매칭·준공 확인 조건 때문에 251,176행은 채우지 않았다. 세대수·주차 등 원천 결측과 알려진 변경 위험은 그 외 항목별로 추가된다. 결측률을 줄이려고 매칭 기준을 완화하지 않았다.',
+ '**역사적으로 확인된 값은 여전히 0건이며, 이번 감소분은 모두 가정값이다.** 결측률 감소와 정보 정확도 개선은 같은 의미가 아니다.','',
+ '## 파일과 분석 방법','',
+ '- 최신 가정 적용본: `data/processed/seoul_sales_2020_2026/seoul_apt_sales_2020_2026_internal_static_assumption.csv`.',
+ '- 엄격한 원본: 같은 폴더의 `seoul_apt_sales_2020_2026_unit_market_internal_features.csv` (수정 없음).',
+ '- `<feature>_basis`: 가정 적용·원천 결측·매칭 부족·변경 위험 제외 등의 원인.',
+ '- `<feature>_history_verified`: 이전의 엄격 값 보존. 현재 모두 결측.',
+ '- `static_assumption_eligible`, `static_assumption_exclusion_reason`: 적용 대상 여부와 제외 사유.',
+ '- `complex_building_count_snapshot`: 현재 총동수. `building_count_history_status`는 과거 동수·개별 동 동일성이 확인되지 않았음을 나타낸다.',
+ '- `static_assumption_version`: 적용 정책 버전. 정책·근거는 `config/internal_static_assumption_policy.json`.',
+ '- `reports/internal_static_assumption/missing_comparison.csv`: 변수별 결측 전후 수치.',
+ '- `complex_assumption_audit.csv`, `year_summary.csv`, `district_summary.csv`: 단지조합·연도·자치구별 적용 결과.',
+ '- 재현: `python src/apply_internal_static_assumption.py`, `python src/report_internal_static_assumption.py`.',
+ '향후 분석은 가정 적용본과 해당 단지 변수를 제외한 사양을 함께 비교한다. 난방·주차처럼 변경 가능한 속성은 각각 제외한 민감도 분석도 권장한다. 최신 값을 과거에 소급한 데이터로 엄격한 당시 정보 기반 미래예측 성능이 검증됐다고 주장하지 않는다. 나중에 실제 변경일·이력이 확보되면 해당 기간의 가정값을 교체한다. 역 개통·학교 개교 등 다른 그룹의 날짜 적용 규칙은 이번 가정으로 완화하지 않는다.','',
+ '현재값 소급의 통계적 성능 영향·편향 크기는 아직 계산하지 않았다. 그 크기를 0으로 가정하지 않으며 모델 학습·인과효과 검증도 수행하지 않았다.']
+ (REPORT/'안정성가정_검토와_결측감소.md').write_text('\n'.join(text)+'\n',encoding='utf-8')
+ registry={'active_variant':'internal_static_assumption','active_csv':s['output'],'active_sha256':s['output_sha256'],'strict_history_csv':s['source'],'strict_history_sha256':s['source_sha256'],'warning':'Active internal features include assumed time-invariant snapshot values; not historically verified. Preserve feature_basis columns.'}
+ (ROOT/'config/dataset_registry.json').write_text(json.dumps(registry,ensure_ascii=False,indent=2),encoding='utf-8')
+ print('Wrote assumption assessment and dataset registry.')
+if __name__=='__main__':main()

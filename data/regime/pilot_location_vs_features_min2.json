@@ -1,0 +1,74 @@
+{
+ "하락기": {
+  "cells": 1287,
+  "mean_y": -0.66,
+  "sd_y": 9.99,
+  "R2_gu_in": 0.191,
+  "R2_dong_in": 0.435,
+  "within_dong_cells": 810,
+  "R2_features_within_dong_in": 0.121,
+  "within_dong_std_coef(%p per 1sd)": {
+   "l_area": 0.43,
+   "floor_s": -0.16,
+   "age": -1.15,
+   "age30": -0.15,
+   "l_hh": -1.61,
+   "park": 0.36,
+   "l_st": -1.15,
+   "lines": -0.65,
+   "sch": -0.29
+  },
+  "oos_R2_gu_only": 0.151,
+  "oos_R2_gu_plus_features": 0.173,
+  "oos_spearman_gu_only": 0.31,
+  "oos_spearman_gu_plus_features": 0.324
+ },
+ "상승기②": {
+  "cells": 2149,
+  "mean_y": 1.55,
+  "sd_y": 14.73,
+  "R2_gu_in": 0.228,
+  "R2_dong_in": 0.393,
+  "within_dong_cells": 1413,
+  "R2_features_within_dong_in": 0.26,
+  "within_dong_std_coef(%p per 1sd)": {
+   "l_area": 0.56,
+   "floor_s": -0.62,
+   "age": 4.26,
+   "age30": -0.87,
+   "l_hh": 2.05,
+   "park": 0.22,
+   "l_st": 1.14,
+   "lines": -0.05,
+   "sch": 0.38
+  },
+  "oos_R2_gu_only": 0.218,
+  "oos_R2_gu_plus_features": 0.404,
+  "oos_spearman_gu_only": 0.455,
+  "oos_spearman_gu_plus_features": 0.595
+ },
+ "회복기": {
+  "cells": 1649,
+  "mean_y": 0.6,
+  "sd_y": 7.94,
+  "R2_gu_in": 0.331,
+  "R2_dong_in": 0.542,
+  "within_dong_cells": 1059,
+  "R2_features_within_dong_in": 0.15,
+  "within_dong_std_coef(%p per 1sd)": {
+   "l_area": 0.26,
+   "floor_s": -0.91,
+   "age": -0.87,
+   "age30": -0.37,
+   "l_hh": 1.23,
+   "park": 0.88,
+   "l_st": -0.03,
+   "lines": 0.48,
+   "sch": -0.25
+  },
+  "oos_R2_gu_only": 0.191,
+  "oos_R2_gu_plus_features": 0.271,
+  "oos_spearman_gu_only": 0.347,
+  "oos_spearman_gu_plus_features": 0.451
+ }
+}

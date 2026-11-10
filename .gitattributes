@@ -1,0 +1,18 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+# 확정 자료는 바이트를 그대로 보존 (해시 검증)
+data/final/** binary
+data/regime/** -text
+data/external/** -text
+reports/final/*.csv -text
+reports/final/*.json -text
+*.xz binary
+*.docx binary
+*.png binary
+# 데이터와 점검 기록은 줄바꿈도 원본 그대로
+data/** -text
+reports/** -text

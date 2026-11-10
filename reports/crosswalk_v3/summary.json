@@ -1,0 +1,111 @@
+{
+  "input": "reports/crosswalk_v2/crosswalk_v2.csv",
+  "input_sha256": "3aceb67687c3a7faec20c1cabf6f5d777f4c304f2b5c8425ff38c088416a8246",
+  "combos": 8908,
+  "transaction_rows": 356087,
+  "by_decision": {
+    "unresolved_insufficient_evidence": {
+      "combos": 6611,
+      "rows": 110545
+    },
+    "unresolved_multiple_supported": {
+      "combos": 2,
+      "rows": 611
+    },
+    "v2_retained": {
+      "combos": 1946,
+      "rows": 211197
+    },
+    "v3_location_only": {
+      "combos": 90,
+      "rows": 10465
+    },
+    "v3_rule_supported": {
+      "combos": 254,
+      "rows": 22452
+    },
+    "v3_rule_supported_changed_candidate": {
+      "combos": 4,
+      "rows": 593
+    },
+    "v3_unresolved_multiple_rule_candidates": {
+      "combos": 1,
+      "rows": 224
+    }
+  },
+  "by_v3_status": {
+    "address_name_supported": {
+      "combos": 956,
+      "rows": 104981
+    },
+    "ambiguous": {
+      "combos": 27,
+      "rows": 5336
+    },
+    "dong_year_phase_name_supported": {
+      "combos": 78,
+      "rows": 5343
+    },
+    "name_location_review": {
+      "combos": 13,
+      "rows": 454
+    },
+    "parcel_year_name_supported": {
+      "combos": 37,
+      "rows": 2646
+    },
+    "parcel_year_subcomplex_scope_location_only": {
+      "combos": 4,
+      "rows": 808
+    },
+    "road_name_year_off_by_one_supported": {
+      "combos": 37,
+      "rows": 2552
+    },
+    "road_year_geo_prefix_supported": {
+      "combos": 126,
+      "rows": 13407
+    },
+    "road_year_name_alias_supported": {
+      "combos": 342,
+      "rows": 33759
+    },
+    "road_year_parcel_supported": {
+      "combos": 611,
+      "rows": 69811
+    },
+    "road_year_phase_name_supported": {
+      "combos": 17,
+      "rows": 1743
+    },
+    "road_year_subcomplex_scope_location_only": {
+      "combos": 86,
+      "rows": 9657
+    },
+    "unique_address_review": {
+      "combos": 360,
+      "rows": 37160
+    },
+    "unmatched": {
+      "combos": 6153,
+      "rows": 64839
+    },
+    "year_conflict_review": {
+      "combos": 61,
+      "rows": 3591
+    }
+  },
+  "identity_rules": [
+    "dong_year_phase_name_supported",
+    "road_name_year_off_by_one_supported",
+    "road_year_geo_prefix_supported",
+    "road_year_phase_name_supported"
+  ],
+  "location_only_rules": [
+    "parcel_year_subcomplex_scope_location_only",
+    "road_year_subcomplex_scope_location_only"
+  ],
+  "v2_decisions_changed": 0,
+  "prices_used": false,
+  "manual_validation_completed": false
+}

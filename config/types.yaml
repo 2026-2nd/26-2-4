@@ -1,0 +1,15 @@
+# 특성 효과 인정과 유형 판정 (사전 고정)
+interpret_only_if: test에서 기준선 b1(자치구 평균)보다 나은 모델
+effect:
+  sources: [Ridge 표준화 계수(단지 부트스트랩 95% 구간), CatBoost SHAP 평균 방향]
+  positive_or_negative: 두 방법의 부호가 같고 Ridge 구간이 0을 포함하지 않을 때
+  otherwise: 0
+aggregate:
+  down_effect: [down, corr]      # 하락기(+조정기). 조정기 포함·제외 모두 보고
+  up_effect: {regimes: [up1, up2, up3], min_agree: 2}
+types:
+  전천후형: {down: "+", up: "+"}
+  방어형:   {down: "+", up: "0 또는 -"}
+  공격형:   {down: "-", up: "+"}
+  취약형:   {down: "-", up: "-"}
+  국면무관: {down: "0", up: "0"}

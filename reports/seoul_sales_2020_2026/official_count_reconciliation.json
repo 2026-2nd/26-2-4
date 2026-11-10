@@ -1,0 +1,72 @@
+[
+  {
+    "year": 2020,
+    "downloaded_rows": 84017,
+    "official_count": 84017,
+    "response": {
+      "cnt": 84017
+    },
+    "retrieved_at": "2026-11-01T15:39:09.932018+00:00",
+    "count_match": true
+  },
+  {
+    "year": 2021,
+    "downloaded_rows": 43429,
+    "official_count": 43429,
+    "response": {
+      "cnt": 43429
+    },
+    "retrieved_at": "2026-11-01T15:39:10.089549+00:00",
+    "count_match": true
+  },
+  {
+    "year": 2022,
+    "downloaded_rows": 12801,
+    "official_count": 12801,
+    "response": {
+      "cnt": 12801
+    },
+    "retrieved_at": "2026-11-01T15:39:10.423455+00:00",
+    "count_match": true
+  },
+  {
+    "year": 2023,
+    "downloaded_rows": 35582,
+    "official_count": 35582,
+    "response": {
+      "cnt": 35582
+    },
+    "retrieved_at": "2026-11-01T15:39:11.590382+00:00",
+    "count_match": true
+  },
+  {
+    "year": 2024,
+    "downloaded_rows": 57774,
+    "official_count": 57774,
+    "response": {
+      "cnt": 57774
+    },
+    "retrieved_at": "2026-11-01T15:39:12.460944+00:00",
+    "count_match": true
+  },
+  {
+    "year": 2025,
+    "downloaded_rows": 83782,
+    "official_count": 83782,
+    "response": {
+      "cnt": 83782
+    },
+    "retrieved_at": "2026-11-01T15:39:13.913521+00:00",
+    "count_match": true
+  },
+  {
+    "year": 2026,
+    "downloaded_rows": 56333,
+    "official_count": 56333,
+    "response": {
+      "cnt": 56333
+    },
+    "retrieved_at": "2026-11-01T15:39:14.034628+00:00",
+    "count_match": true
+  }
+]

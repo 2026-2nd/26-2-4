@@ -1,0 +1,92 @@
+{
+  "source": "data/processed/seoul_sales_2020_2026/seoul_apt_sales_2020_2026_internal_static_assumption_crosswalk_v3.csv",
+  "source_sha256": "2072da1a21d8a8413babcc7f13516d1e6ce5df8954efaee302f307665fc3f633",
+  "output": "data/processed/seoul_sales_2020_2026/seoul_apt_sales_2020_2026_crosswalk_v3_access_v1.csv",
+  "output_sha256": "1319998ae92f2f5805434973add3dc265846e92df34bdc39c9638d4b4a81b308",
+  "rows": 356087,
+  "unique_record_ids": 356087,
+  "columns": 92,
+  "station_platform_rows": 690,
+  "station_rows_with_post2020_open_event": 47,
+  "elementary_school_points": 1602,
+  "status_rows": {
+    "computed": 281229,
+    "unavailable_no_complex_point": 74858
+  },
+  "issue_rows": {
+    "straight_line_haversine_not_walking": 281229,
+    "kapt_snapshot_point_not_historical": 281229,
+    "no_complex_link_or_point": 74858,
+    "location_only_complex_link": 47547,
+    "nearest_school_open_date_proxy": 4813,
+    "closure_year_jan_feb_ambiguous": 613,
+    "gtx_proxy_platform_within_1km": 1065
+  },
+  "missing_rate_station_distance": 0.210224,
+  "missing_rate_school_distance": 0.210224,
+  "station_distance_percentiles_m": {
+    "0": 34.3,
+    "5": 175.4,
+    "25": 323.4,
+    "50": 478.0,
+    "75": 692.7,
+    "95": 1205.8,
+    "100": 2882.0
+  },
+  "school_distance_percentiles_m": {
+    "0": 39.6,
+    "5": 124.7,
+    "25": 200.6,
+    "50": 294.8,
+    "75": 414.0,
+    "95": 599.6,
+    "100": 1735.0
+  },
+  "line_count_1km_rows": {
+    "0": 24700,
+    "1": 102320,
+    "2": 98643,
+    "3": 37890,
+    "4": 15286,
+    "5": 1941,
+    "6": 255,
+    "7": 194
+  },
+  "by_year": {
+    "2020": {
+      "rows": 80858,
+      "computed": 62277
+    },
+    "2021": {
+      "rows": 41951,
+      "computed": 30698
+    },
+    "2022": {
+      "rows": 12047,
+      "computed": 7275
+    },
+    "2023": {
+      "rows": 34034,
+      "computed": 27728
+    },
+    "2024": {
+      "rows": 55184,
+      "computed": 45827
+    },
+    "2025": {
+      "rows": 77361,
+      "computed": 64583
+    },
+    "2026": {
+      "rows": 54652,
+      "computed": 42841
+    }
+  },
+  "notes": [
+    "Straight-line Haversine metres between K-apt snapshot complex point and station/school point; not walking distance.",
+    "Stations without an event row are assumed open before 2020-01-01 (KRIC has no opening dates).",
+    "Elementary schools: FOND_DATE>=2019 used as open-date proxy; closed schools from 폐교알리미 with closure assumed March 1 of closure year.",
+    "Rows without complex point are NULL, not 0."
+  ],
+  "model_run": false
+}

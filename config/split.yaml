@@ -1,0 +1,7 @@
+# 상태: 초안(2026-11-10). seed는 새로 정한 값이다. 모델링 시작 전에 팀이 확정하고 이후 바꾸지 않는다.
+# 법정동 단위 분할 (이웃 단지 정보 누출 방지)
+group: [자치구, 법정동]
+test_share: 0.20          # 모든 국면 공통 최종 test, 마지막에 한 번만 평가
+seed: 20261103
+cv: {method: GroupKFold, n_splits: 5}   # 학습 80% 안에서 하이퍼파라미터·모델 선택
+save_to: reports/final/split_test_dongs.csv

@@ -1,0 +1,177 @@
+{
+  "rows": 356087,
+  "date_source_mismatches": 0,
+  "within_source_date_increases": 0,
+  "month_end_rows": 11475,
+  "month_end_share": 0.032225270790565225,
+  "day_of_month_counts": {
+    "1": 10808,
+    "2": 9742,
+    "3": 10940,
+    "4": 11301,
+    "5": 10246,
+    "6": 12054,
+    "7": 11057,
+    "8": 11936,
+    "9": 11893,
+    "10": 11783,
+    "11": 12259,
+    "12": 11262,
+    "13": 12776,
+    "14": 12090,
+    "15": 13829,
+    "16": 11581,
+    "17": 11991,
+    "18": 12220,
+    "19": 11885,
+    "20": 12348,
+    "21": 11817,
+    "22": 12729,
+    "23": 12116,
+    "24": 11395,
+    "25": 10817,
+    "26": 11242,
+    "27": 12986,
+    "28": 10727,
+    "29": 11261,
+    "30": 10920,
+    "31": 6076
+  },
+  "top_contract_dates": [
+    [
+      "2025-10-15",
+      1321
+    ],
+    [
+      "2020-06-13",
+      1238
+    ],
+    [
+      "2025-06-27",
+      1061
+    ],
+    [
+      "2020-06-16",
+      1045
+    ],
+    [
+      "2020-06-27",
+      1041
+    ],
+    [
+      "2020-07-04",
+      968
+    ],
+    [
+      "2025-03-22",
+      872
+    ],
+    [
+      "2025-10-14",
+      864
+    ],
+    [
+      "2020-06-20",
+      850
+    ],
+    [
+      "2025-03-08",
+      806
+    ]
+  ],
+  "unique_contract_dates": 2492,
+  "by_year": {
+    "2020": {
+      "rows": 80858,
+      "month_end_rows": 2793
+    },
+    "2021": {
+      "rows": 41951,
+      "month_end_rows": 1177
+    },
+    "2022": {
+      "rows": 12047,
+      "month_end_rows": 370
+    },
+    "2023": {
+      "rows": 34034,
+      "month_end_rows": 842
+    },
+    "2024": {
+      "rows": 55184,
+      "month_end_rows": 1809
+    },
+    "2025": {
+      "rows": 77361,
+      "month_end_rows": 2604
+    },
+    "2026": {
+      "rows": 54652,
+      "month_end_rows": 1880
+    }
+  },
+  "raw_first_row_examples": [
+    {
+      "source_file": "seoul_apt_sales_2020.csv",
+      "year_month": "202012",
+      "day": "31"
+    },
+    {
+      "source_file": "seoul_apt_sales_2021.csv",
+      "year_month": "202112",
+      "day": "31"
+    },
+    {
+      "source_file": "seoul_apt_sales_2022.csv",
+      "year_month": "202212",
+      "day": "31"
+    },
+    {
+      "source_file": "seoul_apt_sales_2023.csv",
+      "year_month": "202312",
+      "day": "31"
+    },
+    {
+      "source_file": "seoul_apt_sales_2024.csv",
+      "year_month": "202412",
+      "day": "31"
+    },
+    {
+      "source_file": "seoul_apt_sales_2025.csv",
+      "year_month": "202512",
+      "day": "31"
+    },
+    {
+      "source_file": "seoul_apt_sales_2026.csv",
+      "year_month": "202610",
+      "day": "30"
+    }
+  ],
+  "latest_first_rows": [
+    {
+      "contract_year_month_raw": "202012",
+      "contract_day_raw": "31",
+      "contract_date": "2020-12-31"
+    },
+    {
+      "contract_year_month_raw": "202012",
+      "contract_day_raw": "31",
+      "contract_date": "2020-12-31"
+    },
+    {
+      "contract_year_month_raw": "202012",
+      "contract_day_raw": "31",
+      "contract_date": "2020-12-31"
+    },
+    {
+      "contract_year_month_raw": "202012",
+      "contract_day_raw": "31",
+      "contract_date": "2020-12-31"
+    },
+    {
+      "contract_year_month_raw": "202012",
+      "contract_day_raw": "31",
+      "contract_date": "2020-12-31"
+    }
+  ]
+}

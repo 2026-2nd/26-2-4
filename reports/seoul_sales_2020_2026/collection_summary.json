@@ -1,0 +1,118 @@
+{
+  "requested_start": "2020-01-01",
+  "requested_end": "2026-11-02",
+  "downloaded_years": 7,
+  "raw_rows": 373718,
+  "cancelled_rows": 17631,
+  "non_cancelled_rows": 356087,
+  "years": [
+    {
+      "year": 2020,
+      "raw_rows": 84017,
+      "cancelled_rows": 3159,
+      "non_cancelled_rows": 80858,
+      "districts": 25,
+      "min_contract_date": "2020-01-01",
+      "max_contract_date": "2020-12-31",
+      "missing_districts": ""
+    },
+    {
+      "year": 2021,
+      "raw_rows": 43429,
+      "cancelled_rows": 1478,
+      "non_cancelled_rows": 41951,
+      "districts": 25,
+      "min_contract_date": "2021-01-01",
+      "max_contract_date": "2021-12-31",
+      "missing_districts": ""
+    },
+    {
+      "year": 2022,
+      "raw_rows": 12801,
+      "cancelled_rows": 754,
+      "non_cancelled_rows": 12047,
+      "districts": 25,
+      "min_contract_date": "2022-01-01",
+      "max_contract_date": "2022-12-31",
+      "missing_districts": ""
+    },
+    {
+      "year": 2023,
+      "raw_rows": 35582,
+      "cancelled_rows": 1548,
+      "non_cancelled_rows": 34034,
+      "districts": 25,
+      "min_contract_date": "2023-01-01",
+      "max_contract_date": "2023-12-31",
+      "missing_districts": ""
+    },
+    {
+      "year": 2024,
+      "raw_rows": 57774,
+      "cancelled_rows": 2590,
+      "non_cancelled_rows": 55184,
+      "districts": 25,
+      "min_contract_date": "2024-01-01",
+      "max_contract_date": "2024-12-31",
+      "missing_districts": ""
+    },
+    {
+      "year": 2025,
+      "raw_rows": 83782,
+      "cancelled_rows": 6421,
+      "non_cancelled_rows": 77361,
+      "districts": 25,
+      "min_contract_date": "2025-01-01",
+      "max_contract_date": "2025-12-31",
+      "missing_districts": ""
+    },
+    {
+      "year": 2026,
+      "raw_rows": 56333,
+      "cancelled_rows": 1681,
+      "non_cancelled_rows": 54652,
+      "districts": 25,
+      "min_contract_date": "2026-01-01",
+      "max_contract_date": "2026-10-30",
+      "missing_districts": ""
+    }
+  ],
+  "merged_file": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_all_status.csv",
+  "merged_sha256": "132904db9cb74e9b9555ad9f6684f47874f56b3f5a0e7f6a68490c418d9d1bc8",
+  "notes": [
+    "All disclosed rows retained including cancellations.",
+    "Contract dates, not receipt dates. Recent and historical records can be revised.",
+    "2026 is partial through requested cutoff; unreported contracts are not observable.",
+    "Official download-form count equals saved row count for each of 7 years. This does not imply all unreported contracts have arrived."
+  ],
+  "official_count_match_all_years": true,
+  "non_cancelled_file": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_non_cancelled.csv",
+  "non_cancelled_sha256": "8ea69761798dac4a7a556e2f72e2ed6ed5ae6809bc52e3a6d41ee03ff51e772f",
+  "non_cancelled_missing_basic_fields": {
+    "도로명": 245
+  },
+  "columns": [
+    "NO",
+    "시군구",
+    "번지",
+    "본번",
+    "부번",
+    "단지명",
+    "전용면적(㎡)",
+    "계약년월",
+    "계약일",
+    "거래금액(만원)",
+    "동",
+    "층",
+    "매수자",
+    "매도자",
+    "건축년도",
+    "도로명",
+    "해제사유발생일",
+    "거래유형",
+    "중개사소재지",
+    "등기일자",
+    "source_file",
+    "retrieved_at"
+  ]
+}

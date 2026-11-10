@@ -1,0 +1,23 @@
+# 상태: 초안(2026-11-10). 격자 값은 새로 제안한 값이다. 모델링 시작 전에 팀이 확정한다.
+# 국면마다 따로 학습. 모든 모델이 같은 X·분할·가중치(sample_weight = w)
+seed: 20261103
+baselines:
+  - {id: b0, rule: "y_hat = 0 (서울과 같이 움직임)"}
+  - {id: b1, rule: "y_hat = 학습 데이터 자치구 가중평균 y"}
+models:
+  ridge:
+    preprocess: {numeric: standardize, category: one_hot}
+    grid: {alpha: [0.01, 0.1, 1, 10, 100, 1000]}
+  random_forest:
+    grid: {n_estimators: [500], max_depth: [6, 10, null], min_samples_leaf: [5, 20, 50], max_features: [0.33, 0.6]}
+  catboost:
+    categorical: [자치구, 난방방식, 복도유형]
+    grid: {depth: [4, 6, 8], learning_rate: [0.03, 0.1], l2_leaf_reg: [3, 10]}
+    iterations: 3000
+    early_stopping_rounds: 200
+metrics:   # test, 가중
+  - RMSE
+  - MAE
+  - Spearman
+  - top_bottom_20pct_gap   # y_hat 상위 20% 실제 y 평균 - 하위 20%
+uncertainty: {method: 단지 단위 부트스트랩, n: 1000, level: 0.95}

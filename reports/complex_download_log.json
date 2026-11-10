@@ -1,0 +1,59 @@
+[
+  {
+    "name": "seoul_complex.csv",
+    "url": "https://datafile.seoul.go.kr/bigfile/iot/sheet/csv/download.do",
+    "params": {
+      "srvType": "S",
+      "infId": "OA-15818",
+      "serviceKind": "1",
+      "pageNo": "1",
+      "ssUserId": "SAMPLE_VIEW",
+      "strWhere": "",
+      "strOrderby": "SN ASC",
+      "filterCol": "",
+      "txtFilter": ""
+    },
+    "status": 200,
+    "headers": {
+      "Date": "Sun, 01 Nov 2026 14:36:11 GMT",
+      "Server": "Apache",
+      "Content-Disposition": "attachment; filename=\"ìì¸ì ê³µëì£¼í ìíí¸ ì ë³´.csv\"",
+      "Cache-Control": "no-cache",
+      "Pragma": "no-cache",
+      "Expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+      "Connection": "close",
+      "Transfer-Encoding": "chunked",
+      "Content-Type": "application/x-msdownload;charset=CP949"
+    },
+    "bytes": 1433009,
+    "retrieved_at": "2026-11-01T14:36:17.728606+00:00"
+  },
+  {
+    "name": "seoul_complex_preview.json",
+    "url": "https://data.seoul.go.kr/dataList/dataView.do?onepagerow=1000",
+    "params": {
+      "srvType": "S",
+      "infId": "OA-15818",
+      "serviceKind": "1",
+      "pageNo": "1",
+      "ssUserId": "SAMPLE_VIEW",
+      "strWhere": "",
+      "strOrderby": "SN ASC",
+      "filterCol": "",
+      "txtFilter": ""
+    },
+    "status": 200,
+    "headers": {
+      "Date": "Sun, 01 Nov 2026 14:36:11 GMT",
+      "Content-Language": "ko-KR",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "X-Requested-With",
+      "Set-Cookie": "JSESSIONID=FB9C562E97025D956B77B5E7FE74F7DA; Path=/; Secure; HttpOnly",
+      "Connection": "close",
+      "Transfer-Encoding": "chunked",
+      "Content-Type": "text/html;charset=UTF-8"
+    },
+    "bytes": 1039580,
+    "retrieved_at": "2026-11-01T14:36:12.307384+00:00"
+  }
+]

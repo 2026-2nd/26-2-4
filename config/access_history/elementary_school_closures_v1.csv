@@ -1,0 +1,8 @@
+closed_school_id,school_name,sido,sigungu,emd,jibun,established,closed_year,assumed_close_date,lat,lon,source,retrieved
+C103908,화양초등학교,서울특별시,광진구,화양동,12-2,1983.10.21,2023,2023-03-01,37.5441961,127.0712094,https://closedschool.klea.re.kr/closedSchool/closedSchoolList.do (ArcGIS EDU_DLAYER_CLOSEDSCH_PUB),2026-11-02
+C100988,서울염강초등학교,서울특별시,강서구,가양동,1492,1994.10.26,2020,2020-03-01,37.5610269,126.8643898,https://closedschool.klea.re.kr/closedSchool/closedSchoolList.do (ArcGIS EDU_DLAYER_CLOSEDSCH_PUB),2026-11-02
+C103960,고산초등학교,경기도,의정부시,고산동,464,1946.09.01,2024,2024-03-01,37.7314218,127.1058779,https://closedschool.klea.re.kr/closedSchool/closedSchoolList.do (ArcGIS EDU_DLAYER_CLOSEDSCH_PUB),2026-11-02
+C100154,동패초등학교,경기도,파주시,동패동,1795,2003.03.01,2020,2020-03-01,37.7171731,126.7402790,https://closedschool.klea.re.kr/closedSchool/closedSchoolList.do (ArcGIS EDU_DLAYER_CLOSEDSCH_PUB),2026-11-02
+C101006,부천덕산초등학교대장분교장,경기도,부천시 오정구,대장동,196-1,1957.10.21,2021,2021-03-01,37.5419803,126.7909940,https://closedschool.klea.re.kr/closedSchool/closedSchoolList.do (ArcGIS EDU_DLAYER_CLOSEDSCH_PUB),2026-11-02
+C104025,경수초등학교,경기도,안산시 상록구,성포동,594-3,2000.05.04,2025,2025-03-01,37.3269927,126.8506091,https://closedschool.klea.re.kr/closedSchool/closedSchoolList.do (ArcGIS EDU_DLAYER_CLOSEDSCH_PUB),2026-11-02
+C104024,복사초등학교,경기도,부천시 소사구,소사본동,405,1989.09.01,2024,2024-03-01,37.4674296,126.7989300,https://closedschool.klea.re.kr/closedSchool/closedSchoolList.do (ArcGIS EDU_DLAYER_CLOSEDSCH_PUB),2026-11-02

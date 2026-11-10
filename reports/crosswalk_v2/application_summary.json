@@ -1,0 +1,106 @@
+{
+  "source": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_unit_market_internal_features.csv",
+  "source_sha256": "9c4e95cb107c36fb8e756a06338f9e274f3140e8f0db11d7d72b4fe02312d7a6",
+  "previous_static_file": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_internal_static_assumption.csv",
+  "previous_static_sha256": "2af17739b1132541a1c91fbb17990ad1420821cd55d82171f9d20e50e1bbb138",
+  "output": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_internal_static_assumption_crosswalk_v2.csv",
+  "output_sha256": "89ba7820946d7bad9ec5cf330b24edb4619503db049b47fee8330ecc10d63694",
+  "crosswalk_file": "reports\\crosswalk_v2\\crosswalk_v2.csv",
+  "crosswalk_sha256": "3aceb67687c3a7faec20c1cabf6f5d777f4c304f2b5c8425ff38c088416a8246",
+  "output_rows": 356087,
+  "unique_record_ids": 356087,
+  "eligible_rows": 211125,
+  "rows_with_any_assumed_value": 211125,
+  "rows_with_all_four_values": 191601,
+  "changed_candidate_code_rows": 11173,
+  "changed_match_status_rows": 106216,
+  "match_status_transaction_rows": {
+    "address_name_supported": 104981,
+    "unmatched": 68099,
+    "unique_address_review": 62145,
+    "road_year_name_alias_supported": 33759,
+    "year_conflict_review": 6182,
+    "road_year_parcel_supported": 69811,
+    "name_location_review": 2752,
+    "ambiguous": 5712,
+    "parcel_year_name_supported": 2646
+  },
+  "feature_names": [
+    "household_count",
+    "parking_per_household",
+    "heating_type",
+    "corridor_type"
+  ],
+  "missing_comparison": [
+    {
+      "feature": "household_count",
+      "previous_filled": 102844,
+      "new_filled": 208229,
+      "additional_filled": 105385,
+      "previous_missing": 253243,
+      "new_missing": 147858,
+      "previous_missing_rate": 0.7111829412475041,
+      "new_missing_rate": 0.41522998593040467,
+      "missing_reduction_percentage_points": 29.595295531709947
+    },
+    {
+      "feature": "parking_per_household",
+      "previous_filled": 94111,
+      "new_filled": 191752,
+      "additional_filled": 97641,
+      "previous_missing": 261976,
+      "new_missing": 164335,
+      "previous_missing_rate": 0.7357078466779186,
+      "new_missing_rate": 0.4615023856529444,
+      "missing_reduction_percentage_points": 27.420546102497422
+    },
+    {
+      "feature": "heating_type",
+      "previous_filled": 104767,
+      "new_filled": 210981,
+      "additional_filled": 106214,
+      "previous_missing": 251320,
+      "new_missing": 145106,
+      "previous_missing_rate": 0.7057825756065231,
+      "new_missing_rate": 0.4075015375455998,
+      "missing_reduction_percentage_points": 29.828103806092333
+    },
+    {
+      "feature": "corridor_type",
+      "previous_filled": 104904,
+      "new_filled": 211118,
+      "additional_filled": 106214,
+      "previous_missing": 251183,
+      "new_missing": 144969,
+      "previous_missing_rate": 0.7053978381687621,
+      "new_missing_rate": 0.4071168001078388,
+      "missing_reduction_percentage_points": 29.828103806092333
+    }
+  ],
+  "basis_counts": {
+    "household_count": {
+      "assumed_time_invariant": 208229,
+      "missing_match_or_approval_check": 144962,
+      "missing_source_value": 2896
+    },
+    "parking_per_household": {
+      "assumed_time_invariant": 191752,
+      "missing_match_or_approval_check": 144962,
+      "missing_source_value": 18998,
+      "excluded_known_change_risk": 375
+    },
+    "heating_type": {
+      "assumed_time_invariant": 210981,
+      "missing_match_or_approval_check": 144962,
+      "excluded_known_change_risk": 144
+    },
+    "corridor_type": {
+      "assumed_time_invariant": 211118,
+      "missing_match_or_approval_check": 144962,
+      "missing_source_value": 7
+    }
+  },
+  "historical_verification_completed": false,
+  "manual_match_accuracy_evaluation_completed": false,
+  "model_run": false
+}

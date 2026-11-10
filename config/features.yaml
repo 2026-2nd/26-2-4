@@ -1,0 +1,44 @@
+# 특성은 국면 시작 월 a 시점에 알 수 있던 값만 쓴다 (point-in-time)
+base:   # 기본 15개
+  규모:
+    - {name: 전용면적, column: 전용면적(㎡)}
+    - {name: 세대수, column: 세대수}
+  건물:
+    - {name: 연식_개월_a, from: [사용승인일, 건축년도], note: "a월 기준으로 다시 계산. 사용승인일 없으면 건축년도 7월 가정"}
+    - {name: 재건축연한, rule: 연식_개월_a >= 360}
+    - {name: 층, rule: 시작 창 거래 층 중앙값(기울기 방식은 국면 내 중앙값)}
+    - {name: 세대당_주차대수, column: 세대당_주차대수, note: "연식과 순위상관 -0.65"}
+    - {name: 난방방식, column: 난방방식, type: category}
+    - {name: 복도유형, column: 복도유형, type: category}
+    - {name: 시공사_상위10, column: 시공사_상위10}
+    - {name: 단지명_상위10브랜드, column: 단지명_상위10브랜드}
+  입지:
+    - {name: 최근접_역_거리, column: 최근접_역_거리(m), rule: 시작 창 거래 값}
+    - {name: 1km내_노선수, column: 1km내_노선수}
+    - {name: 최근접_초등학교_거리, column: 최근접_초등학교_거리(m)}
+    - {name: 1km내_학교수, column: 1km내_학교수}
+  위치:
+    - {name: 자치구, column: 자치구, type: category}
+controls:   # 확장 모델에서만 ("넣어도 특성 효과가 유지되는가")
+  - {name: 토지거래허가구역_a, source: data/features/tohuh_regime_start_by_complex.csv}
+  - {name: 가격대, rule: "a-12 ~ a-4개월 셀 중앙 가격: 9억 이하 / 9~15억 / 15억 초과", note: 시작 창과 겹치지 않게}
+  - {name: 직전국면_y, rule: 이번 시작 창과 겹치지 않는 구간으로 계산}
+  - {name: 회전율, rule: 시작 창 이전 12개월 거래 수 / 세대수}
+missing:
+  ridge: 학습 fold 중앙값 + 결측 표시 변수
+  catboost: NaN 그대로
+not_features:
+  좌표기준: 강건성 점검용
+excluded:   # 제외 이유는 docs/decisions.md
+  - {name: 거래금액·평당가, why: y의 재료(누출)}
+  - {name: 계약일, why: 국면으로 이미 나눔}
+  - {name: 법정동, why: 분할 그룹}
+  - {name: 단지명·번지, why: 식별자}
+  - {name: 건축년도, why: 연식과 중복}
+  - {name: 동, why: 2022년 이전 미공개}
+  - {name: 동수·총주차·1km 역 수, why: 다른 특성과 중복}
+  - {name: 공원, why: 시점 정보 없음}
+  - {name: 과거 거래 4종, why: 가격 정보. 통제 변수로만}
+  - {name: 분양/임대, why: 혼합 22건·임대 0.5%·기타 정의 없음}
+  - {name: 전세가율, why: 아파트 특성이 아니고 해석 방향이 갈림}
+  - {name: 최근접 중·고 거리, 학교급별 수, why: v4에서 1km내_학교수로 통합}

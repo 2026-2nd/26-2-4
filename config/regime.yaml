@@ -1,0 +1,22 @@
+# 시장 국면 판정 규칙과 확정 국면 (2026-11-03 고정, 2017~2019 자료를 넣기 전)
+# 구현: src/regime/turning_points.py · 근거: data/regime/official_comparison.json, docs/evidence/README.md
+rule:
+  index: 한국부동산원 공동주택 실거래가격지수 (서울 아파트)   # data/external/rone_apt_trade_index_seoul_raw.csv
+  crosscheck_index: 자체 지수 main                          # data/regime/seoul_index_2017_2026.csv
+  smoothing_months: 3          # 중심 이동평균
+  candidate_window_months: 6   # 앞뒤 6개월 안 최고·최저
+  min_phase_months: 6
+  min_cycle_months: 15
+  decline_threshold: 0.10      # 정점→저점 -10% 이상이면 하락기
+  correction_threshold: 0.03   # -3% ~ -10%면 조정기
+  recovery_share: 0.5          # 낙폭의 50%를 회복할 때까지 회복기
+  policy_use: 해석에만 사용(경계 결정에 쓰지 않음)
+
+# a = 시작 기준월, b = 끝 기준월, L = 길이(개월). 변화율은 공식 실거래지수
+regimes:
+  - {id: up1,  name: 상승기①, start: 2017-01, end: 2018-10, a: 2017-01, b: 2018-10, L: 21, official_change_pct: 34.7, side: up}
+  - {id: corr, name: 조정기,  start: 2018-11, end: 2019-04, a: 2018-10, b: 2019-04, L: 6,  official_change_pct: -5.1, side: down, note: "길이가 규칙 경계. 포함·제외 모두 보고"}
+  - {id: up2,  name: 상승기②, start: 2019-05, end: 2021-10, a: 2019-04, b: 2021-10, L: 30, official_change_pct: 64.1, side: up, note: "2019-05~06 회복기(2개월) 병합"}
+  - {id: down, name: 하락기,  start: 2021-11, end: 2023-01, a: 2021-10, b: 2023-01, L: 15, official_change_pct: -23.6, side: down}
+  - {id: rec,  name: 회복기,  start: 2023-02, end: 2024-07, a: 2023-01, b: 2024-07, L: 18, official_change_pct: 14.7, side: recovery}
+  - {id: up3,  name: 상승기③, start: 2024-08, end: null,    a: 2024-07, b: 2026-08, L: 25, official_change_pct: 24.2, side: up, note: "진행 중. b = 공식 지수 마지막 달"}

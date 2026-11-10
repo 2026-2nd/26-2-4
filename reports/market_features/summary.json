@@ -1,0 +1,55 @@
+{
+  "source": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_unit_features.csv",
+  "source_sha256": "7fa4fe766196952d77ed7759f5cfa418d5f99945a45b5f09251ebad89e1dd84d",
+  "output": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_unit_market_features.csv",
+  "output_sha256": "742637d88ac529e460e7fa512ff9c7e0810a74b7446bdf8e22861726a9311597",
+  "output_rows": 356087,
+  "unique_record_ids": 356087,
+  "feature_names": [
+    "district_code",
+    "contract_month",
+    "contract_time_index"
+  ],
+  "missing_counts": {
+    "district_code": 0,
+    "contract_month": 0,
+    "contract_time_index": 0
+  },
+  "statuses": {
+    "complete": 356087
+  },
+  "issues": {},
+  "ranges": {
+    "contract_month": [
+      1,
+      12
+    ],
+    "contract_time_index": [
+      0,
+      81
+    ]
+  },
+  "district_count": 25,
+  "by_year": {
+    "2020": 80858,
+    "2021": 41951,
+    "2022": 12047,
+    "2023": 34034,
+    "2024": 55184,
+    "2025": 77361,
+    "2026": 54652
+  },
+  "codebook": "data\\raw\\region_codes\\molit_seoul_districts.json",
+  "codebook_sha256": "c3d856acb8400ded0c6e2a462ebc948931fb3a688514426297cb3e51e21ec567",
+  "codebook_source": "https://rt.molit.go.kr/data/sgg.do",
+  "codebook_retrieved_at": "2026-11-01T17:03:40.515905+00:00",
+  "district_mapping_basis": "Original transaction district name mapped to current official MOLIT code list. Historical code/boundary versions not independently verified.",
+  "excluded": [
+    "past_prices",
+    "price_growth",
+    "price_indices",
+    "trade_counts",
+    "relative_floor"
+  ],
+  "model_run": false
+}

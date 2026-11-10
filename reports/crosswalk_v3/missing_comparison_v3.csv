@@ -1,0 +1,5 @@
+﻿feature,v2_filled,v3_filled,additional_filled,v2_missing_rate,v3_missing_rate,missing_reduction_percentage_points
+household_count,208229,228610,20381,0.41523,0.357994,5.7236
+parking_per_household,191752,211060,19308,0.461502,0.40728,5.4223
+heating_type,210981,231474,20493,0.407502,0.349951,5.7551
+corridor_type,211118,231611,20493,0.407117,0.349566,5.7551

@@ -1,0 +1,71 @@
+{
+  "output": "data/processed/seoul_sales_2017_2019/seoul_apt_sales_2017_2019_internal_static_assumption_crosswalk_v3.csv",
+  "output_sha256": "b0a7c4c76d472b375803bfb2d8faf1f61a45770f611f8b9a0991a98688c694b7",
+  "rows": 261505,
+  "unique_record_ids": 261505,
+  "columns": 83,
+  "by_year": {
+    "2017": {
+      "raw": 104928,
+      "kept": 104928,
+      "identity": 69172,
+      "all4": 63175,
+      "none": 21297,
+      "location_only": 14459
+    },
+    "2018": {
+      "raw": 81579,
+      "kept": 81579,
+      "none": 17977,
+      "all4": 47773,
+      "identity": 52343,
+      "location_only": 11259
+    },
+    "2019": {
+      "raw": 74998,
+      "kept": 74998,
+      "none": 15560,
+      "all4": 44426,
+      "identity": 48998,
+      "location_only": 10440
+    }
+  },
+  "rows_by_decision_origin": {
+    "existing_2020_2026_decision": 257730,
+    "new_key_rules_applied": 3775
+  },
+  "combo_keys": 8166,
+  "new_combo_keys": 477,
+  "new_key_v3_decisions": {
+    "unresolved_insufficient_evidence": 457,
+    "v3_rule_supported": 13,
+    "v2_retained": 6,
+    "v3_rule_supported_changed_candidate": 1
+  },
+  "official_count_reconciled": false,
+  "raw_files": [
+    {
+      "year": 2019,
+      "sha256": "b2e918fdad5b06ae6e9c0cf76e7eba29347bb82330b9d2f0828f57f4060fd306",
+      "rows": 74998,
+      "upload": "22ea339c-___________20261103123158.csv"
+    },
+    {
+      "year": 2018,
+      "sha256": "a78d401086bdfb59665a4979f5ddca9de2d5cae6f3a5c89713398b72f356effc",
+      "rows": 81579,
+      "upload": "889464e5-___________20261103123138.csv"
+    },
+    {
+      "year": 2017,
+      "sha256": "b676fdd2b8ead683e3557f681cf0a77dd6ebc495df5b7b458d82d52096470fb7",
+      "rows": 104928,
+      "upload": "b63ab69d-___________20261103123039.csv"
+    }
+  ],
+  "notes": [
+    "2020-2026 decisions reused for shared combo keys; new keys evaluated with the same v1/v2/v3 rule code.",
+    "Internal complex values are current snapshots assumed unchanged back to 2017 (assumed_time_invariant).",
+    "contract_time_index keeps the 2020-01=0 definition, so 2017-2019 rows are negative (-36..-1)."
+  ]
+}

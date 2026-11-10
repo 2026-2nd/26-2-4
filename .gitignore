@@ -1,0 +1,34 @@
+# 보안: API 키 (절대 커밋 금지)
+.env
+.env.*
+*.key
+secrets*
+
+# 원자료·중간 산출물 (받는 방법은 docs/data.md)
+data/raw/*
+!data/raw/kric_stations_bbox_20260630.csv
+!data/raw/schools_page1.json
+!data/raw/schools_page2.json
+!data/raw/seoul_complex.csv
+data/processed/
+data/interim/
+data/final/*.csv
+data/features/brand_tohuh_by_record.csv*
+data/buildreg/fetch_log*.txt
+
+# 실행할 때마다 생기는 결과 (확정본만 reports/final로)
+results/
+catboost_info/
+
+# Python·편집기
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+~$*

@@ -1,0 +1,70 @@
+{
+  "source": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_unit_market_features.csv",
+  "source_sha256": "742637d88ac529e460e7fa512ff9c7e0810a74b7446bdf8e22861726a9311597",
+  "output": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_unit_market_internal_features.csv",
+  "output_sha256": "9c4e95cb107c36fb8e756a06338f9e274f3140e8f0db11d7d72b4fe02312d7a6",
+  "output_rows": 356087,
+  "unique_record_ids": 356087,
+  "complex_source": "data\\raw\\seoul_complex.csv",
+  "complex_source_sha256": "87f2697a0f2e055c9819c6ab88a207b4f77449af904ae9d74715a21db988adb0",
+  "complex_source_rows": 2894,
+  "complex_source_url": "https://data.seoul.go.kr/dataList/OA-15818/S/1/datasetView.do",
+  "complex_snapshot_date": "2026-11-01",
+  "transaction_complex_keys": 8908,
+  "match_status_transaction_rows": {
+    "address_name_supported": 104981,
+    "unmatched": 69621,
+    "unique_address_review": 156236,
+    "year_conflict_review": 6234,
+    "ambiguous": 15251,
+    "name_location_review": 3764
+  },
+  "match_status_complex_keys": {
+    "address_name_supported": 956,
+    "unmatched": 6209,
+    "unique_address_review": 1506,
+    "year_conflict_review": 101,
+    "ambiguous": 66,
+    "name_location_review": 70
+  },
+  "candidate_transaction_rows": 271215,
+  "feature_names": [
+    "household_count",
+    "parking_per_household",
+    "heating_type",
+    "corridor_type"
+  ],
+  "missing_counts": {
+    "household_count": 356087,
+    "parking_per_household": 356087,
+    "heating_type": 356087,
+    "corridor_type": 356087
+  },
+  "strict_historical_values_generated": 0,
+  "snapshot_value_counts": {
+    "household_count": 267190,
+    "parking_per_household": 247046,
+    "heating_type": 271095,
+    "corridor_type": 270908
+  },
+  "history_status": "No verified field-specific histories available; unqualified historical feature columns remain blank.",
+  "reasons": {
+    "no_verified_attribute_history": 356087,
+    "no_unique_complex_candidate": 84872,
+    "complex_identity_review_required": 166234,
+    "zero_parking_needs_source_confirmation": 18659,
+    "parking_missing_or_invalid": 1541,
+    "households_missing_or_nonpositive": 3944,
+    "heating_missing_or_unmapped": 39,
+    "corridor_missing_or_unmapped": 226,
+    "contract_before_candidate_approval": 81
+  },
+  "source_issues": {
+    "zero_parking_needs_source_confirmation": 219,
+    "households_missing_or_nonpositive": 71,
+    "parking_missing_or_invalid": 39,
+    "corridor_missing_or_unmapped": 19,
+    "heating_missing_or_unmapped": 7
+  },
+  "model_run": false
+}

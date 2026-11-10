@@ -1,0 +1,21 @@
+{
+  "active_variant": "crosswalk_v3_access_v1",
+  "active_csv": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_crosswalk_v3_access_v1.csv",
+  "active_sha256": "1319998ae92f2f5805434973add3dc265846e92df34bdc39c9638d4b4a81b308",
+  "crosswalk_v3_csv": "reports\\crosswalk_v3\\crosswalk_v3.csv",
+  "crosswalk_v3_static_csv": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_internal_static_assumption_crosswalk_v3.csv",
+  "crosswalk_v3_static_sha256": "2072da1a21d8a8413babcc7f13516d1e6ce5df8954efaee302f307665fc3f633",
+  "previous_v2": {
+    "active_variant": "internal_static_assumption_crosswalk_v2",
+    "active_csv": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_internal_static_assumption_crosswalk_v2.csv",
+    "active_sha256": "89ba7820946d7bad9ec5cf330b24edb4619503db049b47fee8330ecc10d63694",
+    "crosswalk_csv": "reports\\crosswalk_v2\\crosswalk_v2.csv",
+    "crosswalk_sha256": "3aceb67687c3a7faec20c1cabf6f5d777f4c304f2b5c8425ff38c088416a8246",
+    "strict_history_csv": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_unit_market_internal_features.csv",
+    "strict_history_sha256": "9c4e95cb107c36fb8e756a06338f9e274f3140e8f0db11d7d72b4fe02312d7a6",
+    "previous_static_csv": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_internal_static_assumption.csv",
+    "previous_static_sha256": "2af17739b1132541a1c91fbb17990ad1420821cd55d82171f9d20e50e1bbb138",
+    "warning": "Evidence-rule matching is not independently validated accuracy. Internal values remain static assumptions, not verified historical observations."
+  },
+  "warning": "Evidence-rule matching is not independently validated accuracy. Internal values remain static assumptions, not verified historical observations. Access features use current K-apt points, straight-line distance, and single-secondary-source opening dates; see config/access_history/README.md."
+}

@@ -1,0 +1,108 @@
+{
+  "source": "data/processed/seoul_sales_2020_2026/seoul_apt_sales_2020_2026_internal_static_assumption_crosswalk_v2.csv",
+  "source_sha256": "89ba7820946d7bad9ec5cf330b24edb4619503db049b47fee8330ecc10d63694",
+  "output": "data/processed/seoul_sales_2020_2026/seoul_apt_sales_2020_2026_internal_static_assumption_crosswalk_v3.csv",
+  "output_sha256": "2072da1a21d8a8413babcc7f13516d1e6ce5df8954efaee302f307665fc3f633",
+  "output_rows": 356087,
+  "unique_record_ids": 356087,
+  "columns": 83,
+  "rows_rebuilt_from_v3_links": 33510,
+  "rows_copied_unchanged": 322577,
+  "previously_filled_values_changed": 0,
+  "eligible_rows": 231618,
+  "rows_with_all_four_values_v2": 191601,
+  "rows_with_all_four_values_v3": 210909,
+  "missing_comparison": [
+    {
+      "feature": "household_count",
+      "v2_filled": 208229,
+      "v3_filled": 228610,
+      "additional_filled": 20381,
+      "v2_missing_rate": 0.41523,
+      "v3_missing_rate": 0.357994,
+      "missing_reduction_percentage_points": 5.7236
+    },
+    {
+      "feature": "parking_per_household",
+      "v2_filled": 191752,
+      "v3_filled": 211060,
+      "additional_filled": 19308,
+      "v2_missing_rate": 0.461502,
+      "v3_missing_rate": 0.40728,
+      "missing_reduction_percentage_points": 5.4223
+    },
+    {
+      "feature": "heating_type",
+      "v2_filled": 210981,
+      "v3_filled": 231474,
+      "additional_filled": 20493,
+      "v2_missing_rate": 0.407502,
+      "v3_missing_rate": 0.349951,
+      "missing_reduction_percentage_points": 5.7551
+    },
+    {
+      "feature": "corridor_type",
+      "v2_filled": 211118,
+      "v3_filled": 231611,
+      "additional_filled": 20493,
+      "v2_missing_rate": 0.407117,
+      "v3_missing_rate": 0.349566,
+      "missing_reduction_percentage_points": 5.7551
+    }
+  ],
+  "basis_counts": {
+    "household_count": {
+      "assumed_time_invariant": 228610,
+      "missing_match_or_approval_check": 124469,
+      "missing_source_value": 3008
+    },
+    "parking_per_household": {
+      "assumed_time_invariant": 211060,
+      "missing_match_or_approval_check": 124469,
+      "missing_source_value": 20183,
+      "excluded_known_change_risk": 375
+    },
+    "heating_type": {
+      "assumed_time_invariant": 231474,
+      "missing_match_or_approval_check": 124469,
+      "excluded_known_change_risk": 144
+    },
+    "corridor_type": {
+      "assumed_time_invariant": 231611,
+      "missing_match_or_approval_check": 124469,
+      "missing_source_value": 7
+    }
+  },
+  "match_status_rows": {
+    "address_name_supported": 104981,
+    "unmatched": 64839,
+    "unique_address_review": 37160,
+    "road_year_name_alias_supported": 33759,
+    "year_conflict_review": 3591,
+    "road_year_parcel_supported": 69811,
+    "road_year_geo_prefix_supported": 13407,
+    "name_location_review": 454,
+    "ambiguous": 5336,
+    "dong_year_phase_name_supported": 5343,
+    "road_year_subcomplex_scope_location_only": 9657,
+    "road_year_phase_name_supported": 1743,
+    "parcel_year_name_supported": 2646,
+    "road_name_year_off_by_one_supported": 2552,
+    "parcel_year_subcomplex_scope_location_only": 808
+  },
+  "link_scope_rows": {
+    "identity": 234242,
+    "none": 74220,
+    "location_only": 47625
+  },
+  "complex_point_rows": {
+    "kapt_snapshot_point_identity_link": 233682,
+    "no_complex_link": 74220,
+    "kapt_snapshot_point_location_only_link": 47547,
+    "kapt_point_missing": 638
+  },
+  "policy_file": "config/internal_static_assumption_policy_v3.json",
+  "historical_verification_completed": false,
+  "manual_match_accuracy_evaluation_completed": false,
+  "model_run": false
+}

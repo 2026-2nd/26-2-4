@@ -1,0 +1,4 @@
+station_no,line_code,station_name,coordinate_from_station_no,coordinate_from_line_code,open_date,source,verification
+GTXA_SUSEO,GTXA,수서(GTX-A),1030,I4105,2024-03-30,http://frdb2.ivyro.net/2.htm,secondary_db_single_source|coordinate_proxy_colocated_station
+GTXA_SEOUL,GTXA,서울역(GTX-A),0133,I4101,2024-12-28,http://frdb2.ivyro.net/2.htm,secondary_db_single_source|coordinate_proxy_colocated_station
+GTXA_YEONSINNAE,GTXA,연신내(GTX-A),0614,S1106,2024-12-28,http://frdb2.ivyro.net/2.htm,secondary_db_single_source|coordinate_proxy_colocated_station

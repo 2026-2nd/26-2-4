@@ -1,0 +1,440 @@
+[
+  {
+    "source": "molit_sales",
+    "metadata": {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "국토교통부_아파트 매매 실거래가 자료",
+      "description": "「부동산 거래신고 등에 관한 법률」에 따라 신고된 자료로서 행정표준코드관리시스템(www.code.go.kr)의 법정동 코드 중 앞5자리(예시 : 서울 종로구 - 11110), 계약년월 6자리(예시 : 201801)로 해당 지역, 해당 기간의 아파트 매매 신고정보를 조회할 수 있습니다. API 설명 : 지역코드와 기간을 설정하여 해당지역, 해당기간의 아파트 매매 실거래가 자료를 제공하는 아파트 매매 실거래가 정보 조회. 세부사항 참고자료 참고. * 공개내용 중 개인정보보호를 위해 아파트의 층정보만 제공되며, 소유권 이전등기 완료된 건에 한하여 동정보가 추가적으로 공개됩니다.",
+      "url": "https://www.data.go.kr/data/15126469/openapi.do",
+      "identifier": "15126469",
+      "inLanguage": "ko",
+      "keywords": "실거래가,매매,거래,아파트,주택",
+      "license": {
+        "name": "이용허락범위 제한 없음",
+        "url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+        "@type": "CreativeWork"
+      },
+      "isAccessibleForFree": true,
+      "dateCreated": "2024-01-25",
+      "dateModified": "2026-07-22",
+      "datePublished": "2024-01-25",
+      "creator": {
+        "name": "국토교통부",
+        "contactPoint": {
+          "contactType": "부동산소비자보호기획단",
+          "telephone": "+82-53-663-8657",
+          "@type": "ContactPoint"
+        },
+        "@type": "Organization"
+      },
+      "encodingFormat": "XML",
+      "includedInDataCatalog": {
+        "name": "공공데이터포털",
+        "url": "https://www.data.go.kr",
+        "@id": "https://www.data.go.kr/#datacatalog",
+        "@type": "DataCatalog"
+      },
+      "additionalProperty": [
+        {
+          "name": "분류체계",
+          "value": "일반공공행정 - 일반행정",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "제공형태",
+          "value": "REST",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "업데이트 주기",
+          "value": "실시간",
+          "@type": "PropertyValue"
+        }
+      ],
+      "distribution": [
+        {
+          "encodingFormat": "XML",
+          "contentUrl": "https://apis.data.go.kr/1613000/RTMSDataSvcAptTrade",
+          "@type": "DataDownload"
+        }
+      ]
+    }
+  },
+  {
+    "source": "molit_detail",
+    "metadata": {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "국토교통부_아파트 매매 실거래가 상세 자료",
+      "description": "「부동산 거래신고 등에 관한 법률」에 따라 신고된 자료로서 행정표준코드관리시스템(www.code.go.kr)의 법정동 코드 중 앞5자리(예시 : 서울 종로구 - 11110), 계약년월 6자리(예시 : 201801)로 해당 지역, 해당 기간의 아파트 매매 신고상세정보를 조회할 수 있습니다. API 설명 : 지역코드와 기간을 설정하여 해당지역, 해당기간의 아파트 매매 실거래가 자료를 제공하는 아파트 매매 실거래가 정보 조회. 세부사항 참고자료 참고. * 공개내용 중 개인정보보호를 위해 아파트의 층정보만 제공되며, 소유권 이전등기 완료된 건에 한하여 동정보가 추가적으로 공개됩니다",
+      "url": "https://www.data.go.kr/data/15126468/openapi.do",
+      "identifier": "15126468",
+      "inLanguage": "ko",
+      "keywords": "실거래가,매매,거래,아파트,주택",
+      "license": {
+        "name": "이용허락범위 제한 없음",
+        "url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+        "@type": "CreativeWork"
+      },
+      "isAccessibleForFree": true,
+      "dateCreated": "2024-01-25",
+      "dateModified": "2026-09-08",
+      "datePublished": "2024-01-25",
+      "creator": {
+        "name": "국토교통부",
+        "contactPoint": {
+          "contactType": "부동산소비자보호기획단",
+          "telephone": "+82-53-663-8657",
+          "@type": "ContactPoint"
+        },
+        "@type": "Organization"
+      },
+      "encodingFormat": "XML",
+      "includedInDataCatalog": {
+        "name": "공공데이터포털",
+        "url": "https://www.data.go.kr",
+        "@id": "https://www.data.go.kr/#datacatalog",
+        "@type": "DataCatalog"
+      },
+      "additionalProperty": [
+        {
+          "name": "분류체계",
+          "value": "일반공공행정 - 일반행정",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "제공형태",
+          "value": "REST",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "업데이트 주기",
+          "value": "실시간",
+          "@type": "PropertyValue"
+        }
+      ],
+      "distribution": [
+        {
+          "encodingFormat": "XML",
+          "contentUrl": "https://apis.data.go.kr/1613000/RTMSDataSvcAptTradeDev",
+          "@type": "DataDownload"
+        }
+      ]
+    }
+  },
+  {
+    "source": "complex_csv",
+    "metadata": {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "국토교통부_공동주택 단지 기본 정보",
+      "alternateName": "국토교통부_공동주택 단지 기본 정보_20240913",
+      "description": "공동주택의 시도, 시군구, 읍면, 동리, 단지코드, 단지명, 단지분류, 법정동주소, 도로명주소, 분양형태, 사용승인일, 동수, 세대수, 관리방식, 난방방식, 복도유형, 시공사, 시행사, 주택관리업자, 일반관리-관리방식, 일반관리-인원, 경비관리-관리방식, 경비관리-인원, 경비관리-계약업체, 청소관리-관리방식, 청소관리-인원, 음식물 처리방법, 소독관리-관리방식, 연간소독횟수, 소독방법, 건물구조, 전기-수전용량, 전기-세대전기계약방식, 전기안전관리자선임여부, 화재수신반방식, 급수방식, 승강기관리형태, 승강기(승객용), 승강기(화물용), 승강기(승객+화물), 승강기(장애인), 승강기(비상용), 승강기(기타), 총주차대수, 지상주차대수, 지하주차대수, CCTV대수, 주차관제, 홈네트워크, 관리사무소 주소, 부대복리시설",
+      "url": "https://www.data.go.kr/data/15073271/fileData.do",
+      "identifier": "15073271",
+      "inLanguage": "ko",
+      "keywords": "단지정보,관리인원,관리방식,공동주택,관리정보",
+      "license": {
+        "name": "이용허락범위 제한 없음",
+        "url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+        "@type": "CreativeWork"
+      },
+      "isAccessibleForFree": true,
+      "dateCreated": "2020-11-05",
+      "dateModified": "2025-06-27",
+      "datePublished": "2020-11-05",
+      "creator": {
+        "name": "국토교통부",
+        "contactPoint": {
+          "contactType": "주택건설운영과",
+          "telephone": "+82-53-663-8263",
+          "@type": "ContactPoint"
+        },
+        "@type": "Organization"
+      },
+      "encodingFormat": "XLSX",
+      "includedInDataCatalog": {
+        "name": "공공데이터포털",
+        "url": "https://www.data.go.kr",
+        "@id": "https://www.data.go.kr/#datacatalog",
+        "@type": "DataCatalog"
+      },
+      "additionalProperty": [
+        {
+          "name": "분류체계",
+          "value": "지역개발 - 지역및도시",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "업데이트 주기",
+          "value": "주간",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "보유근거",
+          "value": "건축법",
+          "@type": "PropertyValue"
+        }
+      ]
+    }
+  },
+  {
+    "source": "kapt_api",
+    "metadata": {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "국토교통부_공동주택 기본 정보제공 서비스",
+      "description": "(공동주택 기본정보)관계법령 등에 따라 공동주택관리정보시스템에 가입한 단지의 관리방식, 설비현황, 교통·생활 편의시설까지 포괄적으로 법정동주소, 분양형태, 난방방식, 건축물대장상 연면적, 동수, 세대수 등의 기본정보와 일반관리방식, 일반관리인원, 일반관리 계약업체, 경비관리방식, 경비관리인원, 경비관리 계약업체, 청소관리방식, 청소관리인원, 음식물처리방법, 소독관리방식, 소독관리 연간소독횟수, 소독방법, 건물구조 등 관리방식 및 주변시설등에 관한 상세정보를 제공하는 서비스",
+      "url": "https://www.data.go.kr/data/15058453/openapi.do",
+      "identifier": "15058453",
+      "inLanguage": "ko",
+      "keywords": "공동주택,관리비,K-APT,관리정보,관리방법",
+      "license": {
+        "name": "이용허락범위 제한 없음",
+        "url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+        "@type": "CreativeWork"
+      },
+      "isAccessibleForFree": true,
+      "dateCreated": "2015-12-28",
+      "dateModified": "2026-08-07",
+      "datePublished": "2015-12-28",
+      "creator": {
+        "name": "국토교통부",
+        "contactPoint": {
+          "contactType": "주택건설운영과",
+          "telephone": "+82-53-663-8263",
+          "@type": "ContactPoint"
+        },
+        "@type": "Organization"
+      },
+      "encodingFormat": "JSON",
+      "includedInDataCatalog": {
+        "name": "공공데이터포털",
+        "url": "https://www.data.go.kr",
+        "@id": "https://www.data.go.kr/#datacatalog",
+        "@type": "DataCatalog"
+      },
+      "additionalProperty": [
+        {
+          "name": "분류체계",
+          "value": "지역개발 - 지역및도시",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "제공형태",
+          "value": "REST",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "업데이트 주기",
+          "value": "실시간",
+          "@type": "PropertyValue"
+        }
+      ],
+      "distribution": [
+        {
+          "encodingFormat": "JSON",
+          "contentUrl": "https://apis.data.go.kr/1613000/AptBasisInfoServiceV5",
+          "@type": "DataDownload"
+        }
+      ]
+    }
+  },
+  {
+    "source": "stations",
+    "metadata": {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "서울교통공사_1_8호선 역사 좌표(위경도) 정보",
+      "alternateName": "서울교통공사_1_8호선 역사 좌표(위경도) 정보_20250814",
+      "description": "서울교통공사 1~8호선에 위치한 276개 전 역사의 경위도 좌표 정보는 현재 공사에서 제공하고 있는 공식 자료로, 각 역의 위치가 소수점 여섯째 자리까지 정밀하게 기록되어 있어 다양한 공공 및 민간 활용에 도움이 되는 기본 데이터입니다. 다만 서울교통공사는 철도 노선의 건설이나 정교한 측량과 같은 전문적인 공간정보 생산 업무를 직접 수행하지 않으므로, 이 좌표 정보를 주기적으로 정기 갱신하기에는 현실적인 제약이 있습니다. 따라서 본 데이터는 새로운 역이 개통되는 경우, 기존 역사가 이전되는 경우, 또는 특정 역이 폐쇄되는 경우와 같이 실제 변화가 발생했을 때에만 수정 및 보완이 이루어집니다. 이러한 운영 방식에 대해 이용자 여러분의 양해를 부탁드리며, 데이터를 활용하실 때에는 최신 정보 여부를 함께 확인해 주시기 바랍니다.",
+      "url": "https://www.data.go.kr/data/15099316/fileData.do",
+      "identifier": "15099316",
+      "inLanguage": "ko",
+      "keywords": "서울지하철,지하철,1호선에서 8호선,지하철역,역사좌표,지하철위경도,위경도,지하철좌표",
+      "license": {
+        "name": "이용허락범위 제한 없음",
+        "url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+        "@type": "CreativeWork"
+      },
+      "isAccessibleForFree": true,
+      "dateCreated": "2025-12-09",
+      "dateModified": "2026-09-17",
+      "datePublished": "2025-12-09",
+      "creator": {
+        "name": "서울교통공사",
+        "contactPoint": {
+          "contactType": "토목처",
+          "telephone": "+82-2-6311-9878",
+          "@type": "ContactPoint"
+        },
+        "@type": "Organization"
+      },
+      "encodingFormat": "CSV",
+      "includedInDataCatalog": {
+        "name": "공공데이터포털",
+        "url": "https://www.data.go.kr",
+        "@id": "https://www.data.go.kr/#datacatalog",
+        "@type": "DataCatalog"
+      },
+      "variableMeasured": [
+        {
+          "name": "연번",
+          "description": "일련번호",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "호선",
+          "description": "호선명",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "고유역번호(외부역코드)",
+          "description": "외부역코드",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "역명",
+          "description": "역명",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "위도",
+          "description": "위도",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "경도",
+          "description": "경도",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "작성일자",
+          "description": "작성일자",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "작성기준일",
+          "description": "작성기준일",
+          "@type": "PropertyValue"
+        }
+      ],
+      "additionalProperty": [
+        {
+          "name": "분류체계",
+          "value": "교통및물류 - 철도",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "업데이트 주기",
+          "value": "연간",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "보유근거",
+          "value": "「서울교통공사 설립 및 운영에 관한 조례」 제19조제1항제1호에 따른 도시철도 운영 및 역사 기본정보 관리 업무자료",
+          "@type": "PropertyValue"
+        }
+      ]
+    }
+  },
+  {
+    "source": "schools",
+    "metadata": {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "전국초중등학교위치표준데이터",
+      "description": "초등학교, 중학교, 고등학교의 소재지 *항목명: 학교ID,학교명,학교급구분,설립일자,설립형태,본교분교구분,운영상태,소재지지번주소,소재지도로명주소,시도교육청코드,시도교육청명,교육지원청코드,교육지원청명,생성일자,변경일자,위도,경도",
+      "url": "https://www.data.go.kr/data/15021148/standard.do",
+      "identifier": "15021148",
+      "inLanguage": "ko",
+      "keywords": "초등학교소재지,중학교소재지,고등학교소재지",
+      "license": {
+        "url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+        "@type": "CreativeWork"
+      },
+      "isAccessibleForFree": true,
+      "dateCreated": "2022-12-29",
+      "dateModified": "2026-10-06",
+      "datePublished": "2022-12-29",
+      "creator": {
+        "name": "한국교육시설안전원",
+        "@type": "Organization"
+      },
+      "encodingFormat": "XLS, XML, JSON, RDF, CSV",
+      "includedInDataCatalog": {
+        "name": "공공데이터포털",
+        "url": "https://www.data.go.kr",
+        "@id": "https://www.data.go.kr/#datacatalog",
+        "@type": "DataCatalog"
+      },
+      "additionalProperty": [
+        {
+          "name": "분류체계",
+          "value": "교육 - 유아및초·중등교육",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "업데이트 주기",
+          "value": "수시",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "관련법령",
+          "value": "초중등교육법",
+          "@type": "PropertyValue"
+        }
+      ]
+    }
+  },
+  {
+    "source": "parks",
+    "metadata": {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "전국도시공원정보표준데이터",
+      "description": "지방자치단체에서 조성한 도시공원(공원 조성이 완료되지 않은 공원정보는 제공범위(대상)에서 제외) * 항목명: 관리번호,공원명,공원구분,소재지도로명주소,소재지지번주소,위도,경도,공원면적,공원보유시설(운동시설),공원보유시설(유희시설),공원보유시설(편익시설),공원보유시설(교양시설),공원보유시설(기타시설),지정고시일,관리기관명,전화번호",
+      "url": "https://www.data.go.kr/data/15012890/standard.do",
+      "identifier": "15012890",
+      "inLanguage": "ko",
+      "keywords": "공원,공공시설,운동시설",
+      "license": {
+        "url": "https://www.data.go.kr/ugs/selectPortalPolicyView.do",
+        "@type": "CreativeWork"
+      },
+      "isAccessibleForFree": true,
+      "dateCreated": "2019-08-07",
+      "dateModified": "2026-06-22",
+      "datePublished": "2019-08-07",
+      "creator": {
+        "name": "지방자치단체",
+        "@type": "Organization"
+      },
+      "encodingFormat": "XLS, XML, JSON, RDF, CSV",
+      "includedInDataCatalog": {
+        "name": "공공데이터포털",
+        "url": "https://www.data.go.kr",
+        "@id": "https://www.data.go.kr/#datacatalog",
+        "@type": "DataCatalog"
+      },
+      "additionalProperty": [
+        {
+          "name": "분류체계",
+          "value": "문화체육관광 - 문화체육관광일반",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "업데이트 주기",
+          "value": "연간",
+          "@type": "PropertyValue"
+        },
+        {
+          "name": "관련법령",
+          "value": "도시공원 및 녹지 등에 관한 법률, 지방자치단체 도시공원 및 녹지 등에 관한 조례 등",
+          "@type": "PropertyValue"
+        }
+      ]
+    }
+  }
+]

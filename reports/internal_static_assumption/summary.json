@@ -1,0 +1,105 @@
+{
+  "source": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_unit_market_internal_features.csv",
+  "source_sha256": "9c4e95cb107c36fb8e756a06338f9e274f3140e8f0db11d7d72b4fe02312d7a6",
+  "output": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_internal_static_assumption.csv",
+  "output_sha256": "2af17739b1132541a1c91fbb17990ad1420821cd55d82171f9d20e50e1bbb138",
+  "output_rows": 356087,
+  "unique_record_ids": 356087,
+  "eligible_rows": 104911,
+  "rows_with_any_assumed_value": 104911,
+  "rows_with_all_four_values": 93960,
+  "feature_names": [
+    "household_count",
+    "parking_per_household",
+    "heating_type",
+    "corridor_type"
+  ],
+  "missing_comparison": [
+    {
+      "feature": "household_count",
+      "before_missing": 356087,
+      "before_missing_rate": 1.0,
+      "after_missing": 253243,
+      "after_missing_rate": 0.7111829412475041,
+      "missing_reduction": 102844,
+      "missing_reduction_percentage_points": 28.881705875249587,
+      "verified_history_values": 0,
+      "assumed_values": 102844
+    },
+    {
+      "feature": "parking_per_household",
+      "before_missing": 356087,
+      "before_missing_rate": 1.0,
+      "after_missing": 261976,
+      "after_missing_rate": 0.7357078466779186,
+      "missing_reduction": 94111,
+      "missing_reduction_percentage_points": 26.42921533220814,
+      "verified_history_values": 0,
+      "assumed_values": 94111
+    },
+    {
+      "feature": "heating_type",
+      "before_missing": 356087,
+      "before_missing_rate": 1.0,
+      "after_missing": 251320,
+      "after_missing_rate": 0.7057825756065231,
+      "missing_reduction": 104767,
+      "missing_reduction_percentage_points": 29.42174243934769,
+      "verified_history_values": 0,
+      "assumed_values": 104767
+    },
+    {
+      "feature": "corridor_type",
+      "before_missing": 356087,
+      "before_missing_rate": 1.0,
+      "after_missing": 251183,
+      "after_missing_rate": 0.7053978381687621,
+      "missing_reduction": 104904,
+      "missing_reduction_percentage_points": 29.460216183123787,
+      "verified_history_values": 0,
+      "assumed_values": 104904
+    }
+  ],
+  "basis_counts": {
+    "household_count": {
+      "assumed_time_invariant": 102844,
+      "missing_match_or_approval_check": 251176,
+      "missing_source_value": 2067
+    },
+    "parking_per_household": {
+      "assumed_time_invariant": 94111,
+      "missing_match_or_approval_check": 251176,
+      "missing_source_value": 10800
+    },
+    "heating_type": {
+      "assumed_time_invariant": 104767,
+      "missing_match_or_approval_check": 251176,
+      "excluded_known_change_risk": 144
+    },
+    "corridor_type": {
+      "assumed_time_invariant": 104904,
+      "missing_match_or_approval_check": 251176,
+      "missing_source_value": 7
+    }
+  },
+  "eligibility_exclusions": {
+    "identity_not_sufficiently_supported": 251106,
+    "complex_source_not_found": 84872,
+    "build_year_not_confirmed": 6302,
+    "approval_date_missing": 68,
+    "snapshot_building_count_missing_or_invalid": 39,
+    "contract_before_approval": 81
+  },
+  "verified_history_values_generated": 0,
+  "historical_building_count_verified": false,
+  "policy_file": "config\\internal_static_assumption_policy.json",
+  "policy_sha256": "b4a30abfb5a3441fca99408d54eb8665acc0af4da4532e834000263133ede60b",
+  "notes": [
+    "Exploratory static-assumption dataset, not strict point-in-time verification.",
+    "No missing-value reduction is claimed as an increase in historically verified observations.",
+    "Known risk search is illustrative, not exhaustive.",
+    "Same current building count does not prove no heating/parking changes.",
+    "Identity criteria were not relaxed to improve coverage."
+  ],
+  "model_run": false
+}

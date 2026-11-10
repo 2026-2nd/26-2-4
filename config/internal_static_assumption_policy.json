@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "date": "2026-11-02",
+  "mode": "exploratory_static_assumption_not_historical_verification",
+  "eligible_match_status": ["address_name_supported"],
+  "require_approval_year_equal_transaction_build_year": true,
+  "require_approval_on_or_before_contract": true,
+  "require_positive_snapshot_building_count": true,
+  "historical_building_count_verified": false,
+  "known_change_risk_exclusions": [
+    {
+      "kapt_code": "A15105004",
+      "feature": "heating_type",
+      "reason": "보라매삼성 개별난방 전환 언급. 정확한 단지별 전환일을 확보하지 않아 전 기간 정적 소급에서 보수적으로 제외",
+      "evidence_url": "https://ms.smc.seoul.kr/attach/record/SEOUL/appendix/a10/A0050507.pdf?time=20260430203552",
+      "evidence_date": "2020-11-03",
+      "scope": "change_risk_only_not_exact_event_date"
+    },
+    {
+      "kapt_code": "A13971502",
+      "feature": "parking_per_household",
+      "reason": "서울시 단지 공식 페이지에 주차장 증설공사 입찰공고·입찰결과 존재. 실제 완료일·변경 전후 면수 미확정으로 정적 소급 제외",
+      "evidence_url": "https://openapt.seoul.go.kr/openApt/index.do?aptCode=A13971502&tr_code=sweb",
+      "scope": "change_risk_only_not_proof_of_completed_construction"
+    }
+  ],
+  "interpretation": "현재값의 기간 내 안정성을 연구상 가정한다. 같은 아파트·준공연도·현행 동수 확인만으로 과거 동수 불변·개별 동 동일성·변경 부재가 입증되지는 않는다. 원천이 과거 공개됐다는 보장도 없다. 기본 엄격 이력 자료와 별도 보관한다."
+}

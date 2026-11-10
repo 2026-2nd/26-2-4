@@ -1,0 +1,401 @@
+{
+ "seoul": {
+  "own": {
+   "last": "2026-10",
+   "runs": [
+    {
+     "phase": "상승기",
+     "start": "2017-01",
+     "end": "2018-10"
+    },
+    {
+     "phase": "조정기",
+     "start": "2018-11",
+     "end": "2019-04"
+    },
+    {
+     "phase": "회복기",
+     "start": "2019-05",
+     "end": "2019-06"
+    },
+    {
+     "phase": "상승기",
+     "start": "2019-07",
+     "end": "2021-09"
+    },
+    {
+     "phase": "하락기",
+     "start": "2021-10",
+     "end": "2023-01"
+    },
+    {
+     "phase": "회복기",
+     "start": "2023-02",
+     "end": "2024-07"
+    },
+    {
+     "phase": "상승기",
+     "start": "2024-08",
+     "end": "2026-10"
+    }
+   ],
+   "phases": [
+    {
+     "peak": "2018-10",
+     "trough": "2019-04",
+     "amplitude": -0.0557,
+     "type": "조정기",
+     "recovery_end": "2019-06"
+    },
+    {
+     "peak": "2021-09",
+     "trough": "2023-01",
+     "amplitude": -0.2408,
+     "type": "하락기",
+     "recovery_end": "2024-07"
+    }
+   ]
+  },
+  "rone_trade": {
+   "last": "2026-08",
+   "runs": [
+    {
+     "phase": "상승기",
+     "start": "2017-01",
+     "end": "2021-10"
+    },
+    {
+     "phase": "하락기",
+     "start": "2021-11",
+     "end": "2023-01"
+    },
+    {
+     "phase": "회복기",
+     "start": "2023-02",
+     "end": "2024-07"
+    },
+    {
+     "phase": "상승기",
+     "start": "2024-08",
+     "end": "2026-08"
+    }
+   ],
+   "phases": [
+    {
+     "peak": "2021-10",
+     "trough": "2023-01",
+     "amplitude": -0.2357,
+     "type": "하락기",
+     "recovery_end": "2024-07"
+    }
+   ]
+  },
+  "rone_survey": {
+   "last": "2026-09",
+   "runs": [
+    {
+     "phase": "상승기",
+     "start": "2017-01",
+     "end": "2022-01"
+    },
+    {
+     "phase": "하락기",
+     "start": "2022-02",
+     "end": "2023-05"
+    },
+    {
+     "phase": "회복기",
+     "start": "2023-06",
+     "end": "2024-10"
+    },
+    {
+     "phase": "상승기",
+     "start": "2024-11",
+     "end": "2026-09"
+    }
+   ],
+   "phases": [
+    {
+     "peak": "2022-01",
+     "trough": "2023-05",
+     "amplitude": -0.1131,
+     "type": "하락기",
+     "recovery_end": "2024-10"
+    }
+   ]
+  }
+ },
+ "zones": {
+  "도심권": {
+   "own": [
+    {
+     "peak": "2021-10",
+     "trough": "2022-11",
+     "amplitude": -0.1369,
+     "type": "하락기",
+     "recovery_end": "2024-02"
+    }
+   ],
+   "rone_trade": [
+    {
+     "peak": "2022-05",
+     "trough": "2023-02",
+     "amplitude": -0.1208,
+     "type": "하락기",
+     "recovery_end": "2023-09"
+    }
+   ],
+   "rone_survey": [
+    {
+     "peak": "2022-01",
+     "trough": "2023-05",
+     "amplitude": -0.1044,
+     "type": "하락기",
+     "recovery_end": "2024-08"
+    }
+   ],
+   "corr_own_trade": 0.72
+  },
+  "동북권": {
+   "own": [
+    {
+     "peak": "2021-09",
+     "trough": "2023-01",
+     "amplitude": -0.2517,
+     "type": "하락기",
+     "recovery_end": "2025-05"
+    }
+   ],
+   "rone_trade": [
+    {
+     "peak": "2018-10",
+     "trough": "2019-04",
+     "amplitude": -0.0435,
+     "type": "조정기",
+     "recovery_end": "2019-06"
+    },
+    {
+     "peak": "2021-09",
+     "trough": "2022-12",
+     "amplitude": -0.2644,
+     "type": "하락기",
+     "recovery_end": "2025-07"
+    }
+   ],
+   "rone_survey": [
+    {
+     "peak": "2022-01",
+     "trough": "2024-03",
+     "amplitude": -0.1323,
+     "type": "하락기",
+     "recovery_end": "2025-10"
+    }
+   ],
+   "corr_own_trade": 0.919
+  },
+  "서북권": {
+   "own": [
+    {
+     "peak": "2018-10",
+     "trough": "2019-04",
+     "amplitude": -0.0445,
+     "type": "조정기",
+     "recovery_end": "2019-06"
+    },
+    {
+     "peak": "2021-09",
+     "trough": "2023-01",
+     "amplitude": -0.2492,
+     "type": "하락기",
+     "recovery_end": "2024-06"
+    }
+   ],
+   "rone_trade": [
+    {
+     "peak": "2021-09",
+     "trough": "2023-01",
+     "amplitude": -0.24,
+     "type": "하락기",
+     "recovery_end": "2024-06"
+    }
+   ],
+   "rone_survey": [
+    {
+     "peak": "2021-12",
+     "trough": "2023-05",
+     "amplitude": -0.1307,
+     "type": "하락기",
+     "recovery_end": "2025-03"
+    }
+   ],
+   "corr_own_trade": 0.829
+  },
+  "서남권": {
+   "own": [
+    {
+     "peak": "2018-10",
+     "trough": "2019-04",
+     "amplitude": -0.0465,
+     "type": "조정기",
+     "recovery_end": "2019-06"
+    },
+    {
+     "peak": "2021-09",
+     "trough": "2023-01",
+     "amplitude": -0.2322,
+     "type": "하락기",
+     "recovery_end": "2024-10"
+    }
+   ],
+   "rone_trade": [
+    {
+     "peak": "2021-09",
+     "trough": "2023-01",
+     "amplitude": -0.2271,
+     "type": "하락기",
+     "recovery_end": "2024-07"
+    }
+   ],
+   "rone_survey": [],
+   "corr_own_trade": 0.801
+  },
+  "동남권": {
+   "own": [
+    {
+     "peak": "2021-09",
+     "trough": "2022-12",
+     "amplitude": -0.2355,
+     "type": "하락기",
+     "recovery_end": "2023-07"
+    }
+   ],
+   "rone_trade": [
+    {
+     "peak": "2021-10",
+     "trough": "2022-12",
+     "amplitude": -0.2453,
+     "type": "하락기",
+     "recovery_end": "2023-07"
+    }
+   ],
+   "rone_survey": [
+    {
+     "peak": "2018-10",
+     "trough": "2019-06",
+     "amplitude": -0.0362,
+     "type": "조정기",
+     "recovery_end": "2019-10"
+    },
+    {
+     "peak": "2022-05",
+     "trough": "2023-03",
+     "amplitude": -0.0821,
+     "type": "조정기",
+     "recovery_end": "2024-05"
+    }
+   ],
+   "corr_own_trade": 0.91
+  }
+ },
+ "corr": {
+  "months": 115,
+  "matrix": {
+   "own": {
+    "own": 1.0,
+    "trade": 0.917,
+    "survey": 0.564
+   },
+   "trade": {
+    "own": 0.917,
+    "trade": 1.0,
+    "survey": 0.636
+   },
+   "survey": {
+    "own": 0.564,
+    "trade": 0.636,
+    "survey": 1.0
+   }
+  },
+  "own_vs_survey_lag1": 0.641
+ },
+ "final": [
+  {
+   "regime": "상승기①",
+   "start": "2017-01",
+   "end": "2018-10",
+   "rone_trade": [
+    34.7,
+    "2018-10"
+   ],
+   "own": [
+    36.6,
+    "2018-10"
+   ]
+  },
+  {
+   "regime": "조정기",
+   "start": "2018-11",
+   "end": "2019-04",
+   "rone_trade": [
+    -5.1,
+    "2019-04"
+   ],
+   "own": [
+    -5.6,
+    "2019-04"
+   ]
+  },
+  {
+   "regime": "상승기②",
+   "start": "2019-05",
+   "end": "2021-10",
+   "rone_trade": [
+    64.1,
+    "2021-10"
+   ],
+   "own": [
+    64.0,
+    "2021-10"
+   ]
+  },
+  {
+   "regime": "하락기",
+   "start": "2021-11",
+   "end": "2023-01",
+   "rone_trade": [
+    -23.6,
+    "2023-01"
+   ],
+   "own": [
+    -23.6,
+    "2023-01"
+   ]
+  },
+  {
+   "regime": "회복기",
+   "start": "2023-02",
+   "end": "2024-07",
+   "rone_trade": [
+    14.7,
+    "2024-07"
+   ],
+   "own": [
+    15.4,
+    "2024-07"
+   ]
+  },
+  {
+   "regime": "상승기③",
+   "start": "2024-08",
+   "end": "진행 중",
+   "rone_trade": [
+    24.2,
+    "2026-08"
+   ],
+   "own": [
+    23.6,
+    "2026-10"
+   ]
+  }
+ ]
+}

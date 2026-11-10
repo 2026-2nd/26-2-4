@@ -1,0 +1,98 @@
+station_no,line_code,station_name,open_date,event,source,verification
+0555,S1105,미사,2020-08-08,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+0556,S1105,하남풍산,2020-08-08,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+0554,S1105,강일,2021-03-27,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+0557,S1105,하남시청(덕풍∙신장),2021-03-27,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+0558,S1105,하남검단산,2021-03-27,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+3762,S1107,산곡,2021-05-22,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+3763,S1107,석남(거북시장),2021-05-22,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+0821,S1108,남위례,2021-12-18,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+0405,I4104,진접역,2022-03-19,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+0406,I4104,오남역,2022-03-19,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+0408,I4104,별내별가람역,2022-03-19,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+D004,I11D1,신사,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+D005,I11D1,논현,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+D006,I11D1,신논현,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+S401,L11SL,샛강,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+S402,L11SL,대방,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+S403,L11SL,서울지방병무청,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+S404,L11SL,보라매,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+S405,L11SL,보라매공원,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+S406,L11SL,보라매병원,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+S407,L11SL,당곡,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+S408,L11SL,신림,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+S409,L11SL,서원,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+S410,L11SL,서울대벤처타운,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+S411,L11SL,관악산,2022-05-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+1980,I41WS,김포공항역,2023-07-01,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+1981,I41WS,원종역,2023-07-01,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+1982,I41WS,부천종합운동장역,2023-07-01,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+1271,I41WS,능곡역,2023-07-01,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+1953,I41WS,대곡역,2023-07-01,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+1272,I41WS,곡산역,2023-08-26,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+1273,I41WS,백마역,2023-08-26,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+1274,I41WS,풍산역,2023-08-26,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+1275,I41WS,일산역,2023-08-26,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+1512,I41K5,성남역,2024-03-30,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+0809,S1108,암사역사공원,2024-08-10,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+808,S1108,장자호수공원,2024-08-10,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+807,S1108,구리(구리전통시장),2024-08-10,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+806,S1108,동구릉,2024-08-10,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+805,S4108,다산역,2024-08-10,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+804,S4108,별내역,2024-08-10,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+3107,S2801,검단호수공원,2025-06-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+3108,S2801,신검단중앙,2025-06-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+3109,S2801,아라(북부법원  검찰청),2025-06-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+S110,L11UI,북한산우이,2017-09-02,open,https://mediahub.seoul.go.kr/archives/1110046 | http://frdb2.ivyro.net/2.htm,two_sources
+S111,L11UI,솔밭공원,2017-09-02,open,https://mediahub.seoul.go.kr/archives/1110046 | http://frdb2.ivyro.net/2.htm,two_sources
+S112,L11UI,4.19민주묘지,2017-09-02,open,https://mediahub.seoul.go.kr/archives/1110046 | http://frdb2.ivyro.net/2.htm,two_sources
+S113,L11UI,가오리,2017-09-02,open,https://mediahub.seoul.go.kr/archives/1110046 | http://frdb2.ivyro.net/2.htm,two_sources
+S114,L11UI,화계,2017-09-02,open,https://mediahub.seoul.go.kr/archives/1110046 | http://frdb2.ivyro.net/2.htm,two_sources
+S115,L11UI,삼양,2017-09-02,open,https://mediahub.seoul.go.kr/archives/1110046 | http://frdb2.ivyro.net/2.htm,two_sources
+S116,L11UI,삼양사거리,2017-09-02,open,https://mediahub.seoul.go.kr/archives/1110046 | http://frdb2.ivyro.net/2.htm,two_sources
+S117,L11UI,솔샘,2017-09-02,open,https://mediahub.seoul.go.kr/archives/1110046 | http://frdb2.ivyro.net/2.htm,two_sources
+S118,L11UI,북한산보국문,2017-09-02,open,https://mediahub.seoul.go.kr/archives/1110046 | http://frdb2.ivyro.net/2.htm,two_sources
+S119,L11UI,정릉,2017-09-02,open,https://mediahub.seoul.go.kr/archives/1110046 | http://frdb2.ivyro.net/2.htm,two_sources
+S120,L11UI,성신여대입구,2017-09-02,open,https://mediahub.seoul.go.kr/archives/1110046 | http://frdb2.ivyro.net/2.htm,two_sources
+S121,L11UI,보문,2017-09-02,open,https://mediahub.seoul.go.kr/archives/1110046 | http://frdb2.ivyro.net/2.htm,two_sources
+S122,L11UI,신설동,2017-09-02,open,https://mediahub.seoul.go.kr/archives/1110046 | http://frdb2.ivyro.net/2.htm,two_sources
+D013,I11D1,미금,2018-04-28,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+4804,I41WS,소사역,2018-06-16,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+4805,I41WS,소새울역,2018-06-16,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+4806,I41WS,시흥대야역,2018-06-16,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+4807,I41WS,신천역,2018-06-16,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+4808,I41WS,신현역,2018-06-16,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+4809,I41WS,시흥시청역,2018-06-16,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+4810,I41WS,시흥능곡역,2018-06-16,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+4811,I41WS,달미역,2018-06-16,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+4812,I41WS,선부역,2018-06-16,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+4813,I41WS,초지역,2018-06-16,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+4814,I41WS,시우역,2018-06-16,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+4815,I41WS,원시역,2018-06-16,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source
+A042,I28A1,마곡나루,2018-09-29,open,https://www.imaeil.com/page/view/2018100111390556525 | http://frdb2.ivyro.net/2.htm,two_sources
+4131,S1109,삼전,2018-12-01,open,https://mediahub.seoul.go.kr/archives/1183286 | http://frdb2.ivyro.net/2.htm,two_sources
+4132,S1109,석촌고분,2018-12-01,open,https://mediahub.seoul.go.kr/archives/1183286 | http://frdb2.ivyro.net/2.htm,two_sources
+4133,S1109,석촌,2018-12-01,open,https://mediahub.seoul.go.kr/archives/1183286 | http://frdb2.ivyro.net/2.htm,two_sources
+4134,S1109,송파나루,2018-12-01,open,https://mediahub.seoul.go.kr/archives/1183286 | http://frdb2.ivyro.net/2.htm,two_sources
+4135,S1109,한성백제,2018-12-01,open,https://mediahub.seoul.go.kr/archives/1183286 | http://frdb2.ivyro.net/2.htm,two_sources
+4136,S1109,올림픽공원(한국체대),2018-12-01,open,https://mediahub.seoul.go.kr/archives/1183286 | http://frdb2.ivyro.net/2.htm,two_sources
+4137,S1109,둔촌오륜,2018-12-01,open,https://mediahub.seoul.go.kr/archives/1183286 | http://frdb2.ivyro.net/2.htm,two_sources
+4138,S1109,중앙보훈병원,2018-12-01,open,https://mediahub.seoul.go.kr/archives/1183286 | http://frdb2.ivyro.net/2.htm,two_sources
+G100,L41G1,양촌역,2019-09-28,open,https://news.mtn.co.kr/news-detail/2019092711123229915 | http://frdb2.ivyro.net/2.htm,two_sources
+G101,L41G1,구래역,2019-09-28,open,https://news.mtn.co.kr/news-detail/2019092711123229915 | http://frdb2.ivyro.net/2.htm,two_sources
+G102,L41G1,마산역,2019-09-28,open,https://news.mtn.co.kr/news-detail/2019092711123229915 | http://frdb2.ivyro.net/2.htm,two_sources
+G103,L41G1,장기역,2019-09-28,open,https://news.mtn.co.kr/news-detail/2019092711123229915 | http://frdb2.ivyro.net/2.htm,two_sources
+G104,L41G1,운양역,2019-09-28,open,https://news.mtn.co.kr/news-detail/2019092711123229915 | http://frdb2.ivyro.net/2.htm,two_sources
+G105,L41G1,걸포북변역,2019-09-28,open,https://news.mtn.co.kr/news-detail/2019092711123229915 | http://frdb2.ivyro.net/2.htm,two_sources
+G106,L41G1,사우역,2019-09-28,open,https://news.mtn.co.kr/news-detail/2019092711123229915 | http://frdb2.ivyro.net/2.htm,two_sources
+G107,L41G1,풍무역,2019-09-28,open,https://news.mtn.co.kr/news-detail/2019092711123229915 | http://frdb2.ivyro.net/2.htm,two_sources
+G108,L41G1,고촌역,2019-09-28,open,https://news.mtn.co.kr/news-detail/2019092711123229915 | http://frdb2.ivyro.net/2.htm,two_sources
+G109,L41G1,김포공항역,2019-09-28,open,https://news.mtn.co.kr/news-detail/2019092711123229915 | http://frdb2.ivyro.net/2.htm,two_sources
+0648,S1106,신내,2019-12-21,open,https://mediahub.seoul.go.kr/archives/1261413 | http://frdb2.ivyro.net/2.htm,two_sources
+1755,I28K1,한대앞역,2020-09-12,open_service,http://frdb2.ivyro.net/2.htm,secondary_db_single_source|correction_v1_missing
+1756,I28K1,중앙역,2020-09-12,open_service,http://frdb2.ivyro.net/2.htm,secondary_db_single_source|correction_v1_missing
+1757,I28K1,고잔역,2020-09-12,open_service,http://frdb2.ivyro.net/2.htm,secondary_db_single_source|correction_v1_missing
+1758,I28K1,초지역,2020-09-12,open_service,http://frdb2.ivyro.net/2.htm,secondary_db_single_source|correction_v1_missing
+1759,I28K1,안산역,2020-09-12,open_service,http://frdb2.ivyro.net/2.htm,secondary_db_single_source|correction_v1_missing
+1760,I28K1,능길역,2020-09-12,open_service,http://frdb2.ivyro.net/2.htm,secondary_db_single_source|correction_v1_missing
+3139,S2801,송도달빛축제공원,2020-12-12,open,http://frdb2.ivyro.net/2.htm,secondary_db_single_source|correction_v1_missing

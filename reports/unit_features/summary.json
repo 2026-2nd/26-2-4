@@ -1,0 +1,92 @@
+{
+  "source": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_all_status.csv",
+  "source_sha256": "132904db9cb74e9b9555ad9f6684f47874f56b3f5a0e7f6a68490c418d9d1bc8",
+  "output": "data\\processed\\seoul_sales_2020_2026\\seoul_apt_sales_2020_2026_unit_features.csv",
+  "output_sha256": "7fa4fe766196952d77ed7759f5cfa418d5f99945a45b5f09251ebad89e1dd84d",
+  "input_rows": 373718,
+  "excluded_cancelled": 17631,
+  "output_rows": 356087,
+  "unique_record_ids": 356087,
+  "statuses": {
+    "complete": 356010,
+    "complete_with_review": 72,
+    "incomplete": 5
+  },
+  "issues": {
+    "nonpositive_floor_review": 72,
+    "build_year_after_contract_year": 5
+  },
+  "missing_counts": {
+    "exclusive_area_m2": 0,
+    "transaction_floor": 0,
+    "building_age_years": 5
+  },
+  "ranges": {
+    "exclusive_area_m2": [
+      10.156,
+      317.36
+    ],
+    "transaction_floor": [
+      -3.0,
+      68.0
+    ],
+    "building_age_years": [
+      0.0,
+      65.0
+    ]
+  },
+  "by_year": {
+    "2020": {
+      "rows": 80858,
+      "complete": 80828,
+      "complete_with_review": 27,
+      "incomplete": 3
+    },
+    "2021": {
+      "rows": 41951,
+      "complete": 41936,
+      "complete_with_review": 14,
+      "incomplete": 1
+    },
+    "2022": {
+      "rows": 12047,
+      "complete": 12043,
+      "complete_with_review": 4
+    },
+    "2023": {
+      "rows": 34034,
+      "complete": 34028,
+      "complete_with_review": 6
+    },
+    "2024": {
+      "rows": 55184,
+      "complete": 55179,
+      "complete_with_review": 5
+    },
+    "2025": {
+      "rows": 77361,
+      "complete": 77349,
+      "complete_with_review": 11,
+      "incomplete": 1
+    },
+    "2026": {
+      "rows": 54652,
+      "complete": 54647,
+      "complete_with_review": 5
+    }
+  },
+  "feature_names": [
+    "exclusive_area_m2",
+    "transaction_floor",
+    "building_age_years"
+  ],
+  "age_basis": "build_year_approx",
+  "approval_date_used": false,
+  "relative_floor_included": false,
+  "notes": [
+    "No row removed for unit-feature issues; missing fields and reasons are retained.",
+    "Negative/zero floors retained with review flag, not automatically discarded.",
+    "Fingerprint equality is not a duplicate-removal instruction.",
+    "These are attributes reported in the latest revised source, not proof of their historical publication time."
+  ]
+}
