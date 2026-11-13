@@ -13,6 +13,7 @@
 | `dataset/` | v3 → v4 학교 열 정리 |
 | `buildreg/` | 건축물대장 조회(내 PC에서 실행)와 반영 → v5 |
 | `regime/` | 자체 지수, 국면 판정 규칙, 부트스트랩, 공식 지수 비교, 파일럿 |
+| `eda/` | 탐색적 자료 분석(기술 통계만): `python src/eda/run_eda.py` → `reports/eda/` |
 | `cells/`, `model/`, `evaluate/`, `report/` | 예정: 셀×국면 표 → 모델 → 평가·유형 → reports/final |
 
 ## 데이터 재생성 순서
