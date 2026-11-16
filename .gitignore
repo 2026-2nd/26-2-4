@@ -19,6 +19,10 @@ data/buildreg/fetch_log*.txt
 # 실행할 때마다 생기는 결과 (확정본만 reports/final로)
 results/
 catboost_info/
+*.joblib
+*.log
+htmlcov/
+.coverage
 
 # Python·편집기
 __pycache__/

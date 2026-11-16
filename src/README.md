@@ -14,7 +14,10 @@
 | `buildreg/` | 건축물대장 조회(내 PC에서 실행)와 반영 → v5 |
 | `regime/` | 자체 지수, 국면 판정 규칙, 부트스트랩, 공식 지수 비교, 파일럿 |
 | `eda/` | 탐색적 자료 분석(기술 통계만): `python src/eda/run_eda.py` → `reports/eda/` |
-| `cells/`, `model/`, `evaluate/`, `report/` | 예정: 셀×국면 표 → 모델 → 평가·유형 → reports/final |
+| `cells/` | `build_cells.py`: v5에서 창·기울기 셀×국면 표와 시점 특성·통제변수·제외 내역 생성 |
+| `model/` | `train.py`: 법정동 분할 고정, 학습 내부 5-fold 튜닝, 기본 모델 학습·일회 test 평가 |
+| `evaluate/`, `report/` | 예정: 특성 효과·유형·강건성. 현재 성능표는 `tools/report_models.py`로 생성 |
+
 
 ## 데이터 재생성 순서
 
@@ -41,3 +44,20 @@ python src/regime/compare_official.py        # 공식 지수 비교, 확정 국�
 ```
 
 판정 규칙은 `regime/turning_points.py` 한 곳에만 있다. `tests/test_regime.py`가 저장된 지수로 확정 국면이 다시 나오는지 확인한다.
+
+## 셀×국면 표
+
+```
+python src/cells/build_cells.py
+python tools/verify_cells.py
+```
+
+입력은 커밋된 v5·자체지수·시설 이력만 필요하다. 별도 API 키나 `data/processed`는 필요 없다.
+출력과 표본 변화는 `reports/final/cells/README.md`에 설명했다. 모델 학습은 하지 않는다.
+
+## 모델 학습·평가
+
+실행 순서와 고정 규칙은 `reports/final/models/README.md`에 있다.
+완료된 실험의 성능은 `python tools/verify_models.py`로 검증한다.
+새 환경에서 모델 파일만 재생성하려면 `python tools/refit_models.py`를 실행한다.
+이 명령은 저장된 설정으로 학습 데이터에만 적합하며 test 평가·재튜닝을 하지 않는다.
