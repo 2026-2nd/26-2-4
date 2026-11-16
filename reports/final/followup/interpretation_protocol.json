@@ -1,0 +1,21 @@
+{
+  "test_used": false,
+  "shap_additivity_passed": true,
+  "tables": 12,
+  "bootstrap_replicates": 1000,
+  "input_sha256": {
+    "comparison": "6ef64159b4d4006f4d596a95818214ecd55eccca6a461026268c00b74804a633",
+    "choices": "c49e99266c640e3db98a0fcf3595735310994533d4ec18ff6a9c532d135f04c8",
+    "source": "53da441285150fc1df5c192ac7974f24259c88b8ae18c4f52115ed16f7cf7f08"
+  },
+  "direction": "unweighted Spearman(feature, SHAP) on finite numeric observations; not mean SHAP sign",
+  "intervals": "cluster bootstrap conditional on chosen specification and fixed reference preprocessing",
+  "categories": "importance only; no ordinal direction or type assigned",
+  "limitations": [
+    "training-only exploratory interpretation",
+    "selection uncertainty excluded",
+    "global trend may hide nonlinear effects",
+    "missingness is not causal",
+    "zero sign means insufficient agreement, not absence of effect"
+  ]
+}

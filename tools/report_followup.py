@@ -1,6 +1,7 @@
 """Readable stage reports generated from completed follow-up outputs."""
 import pathlib
 import sys
+import json
 import pandas as pd
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src/model'))
@@ -12,8 +13,13 @@ REG={'up1':'상승기①','corr':'조정기','up2':'상승기②','down':'하락
 def main():
     scores=pd.read_csv(f.OUT/'cv_comparison.csv');choices=pd.read_csv(f.OUT/'cv_choices.csv')
     quality=pd.read_csv(f.OUT/'quality_audit.csv');dup=pd.read_csv(f.OUT/'duplicate_target_sensitivity.csv')
+    best=choices.loc[choices.groupby('table').RMSE.idxmin()]
+    cat_wins=int(best.model.eq('catboost').sum())
     lines=['# EDA 결과 반영 후 — 결측치 처리와 특성 공학 비교','',
         '2026-11-16 · v2 탐색 실험. 기존 v1 결과와 시험 동네는 변경하지 않았다.', '',
+        f'**모델 판단:** 두 모델을 비교한 {len(best)}개 표 중 CatBoost의 선택 사양이 {cat_wins}개에서 더 낮은 CV 오차를 보였다. '+
+        ('기존 주모델 CatBoost를 유지하고 Ridge는 효과 방향을 대조하는 보조 모델로 사용하는 판단을 뒷받침한다.' if cat_wins==len(best) else '국면별 비교표를 보고 모델별 차이를 판단해야 한다.')+
+        ' 수치형·범주형 특성과 결측을 함께 다룰 수 있다는 장점도 있다. 다만 이번 결과는 학습 내부 탐색이며 새 시험 성능을 입증하지 않는다.', '',
         '## 무엇을 비교했나','',
         '학습 동네만 사용해 12개 국면×방식에서 아래 7개 사양과 Ridge·CatBoost를 비교했다. 총 168개 비교, 각 5-fold로 840회 적합했다.',
         'v1에서 선택한 모델 설정·CatBoost 최종 반복 수를 고정해 모든 사양에 동일하게 적용했다. 랜덤포레스트의 v1 결과는 보존했으며 이번 사양 탐색에서는 재학습하지 않았다.',
@@ -47,7 +53,7 @@ def main():
         '- 설정: `config/followup.yaml`. 실행 순서: 아래 명령을 저장소 루트에서 실행한다.', '',
         '```bash','python src/model/followup.py audit','python src/model/followup.py compare',
         'python tools/audit_duplicate_sensitivity.py','python src/model/interpret_followup.py',
-        'python tools/verify_followup.py','python tools/report_followup.py','```','',
+        'python tools/verify_followup.py','python tools/plot_followup.py','python tools/report_followup.py','```','',
         '학습 모델·행별 OOF·재시작 캐시는 Git 제외 `results/followup_v2/`에 저장된다. 입력·코드 해시가 달라지면 기존 캐시 재사용을 거부한다.', '',
         '## 남은 검토','',
         '주차 출처 확인, 창 폭 변경, 2020년 이후 표본, 좌표 출처별 분석, 다음 국면 예측과 새로운 외부 검증은 아직 하지 않았다. 이번 작업은 EDA 지적 사항에 대한 학습 내부 비교와 탐색적 해석이다.']
@@ -55,6 +61,7 @@ def main():
     imp=pd.read_csv(f.OUT/'shap_importance.csv');types=pd.read_csv(f.OUT/'type_candidates.csv')
     lines=['# 모델 해석 — 국면별 주요 특성과 SHAP','',
         'EDA 후속 비교에서 모델별로 선택한 사양을 학습 동네 전체에 적합하고 해석했다. 기존 v1 시험은 다시 열지 않았다. **아래는 탐색 결과이며 최종 인과효과나 확정 유형이 아니다.**', '',
+        '목표값은 서울 전체 대비 상대 로그가격 변화다. 아래 유형은 아파트를 분류한 결과가 아니라, 수치 특성이 커질 때의 상대 변화 방향을 묶은 후보다. 하락기의 +는 서울 대비 덜 하락하는 방향을 뜻하며 절대가격 상승을 뜻하지 않는다.', '',
         '## 해석 방법','',
         '- Ridge: 학습 단지 단위 1,000회 부트스트랩. 선택된 사양·규제강도·기준 전처리를 고정한 조건부 구간이다. 모델/특성 선택의 불확실성은 포함하지 않는다.',
         '- CatBoost: 표마다 학습 셀 최대 1,000개를 고정 시드로 추출해 내장 SHAP를 계산했다. SHAP 합과 예측값의 일치도 확인했다.',
@@ -81,5 +88,15 @@ def main():
         '- [조정기 포함·제외 유형 후보](type_candidates.csv)',
         '- [해석 프로토콜과 한계](interpretation_protocol.json)']
     (f.OUT/'interpretation.md').write_text('\n'.join(lines)+'\n',encoding='utf-8',newline='\n')
+    verified=json.loads((f.OUT/'verification.json').read_text(encoding='utf-8'))
+    if verified['oof_scores_recomputed']!=len(scores) or len(scores)!=168:
+        raise ValueError('Full validated comparison required before marking completion')
+    f.save({'status':'complete_train_only_followup','completed_comparisons':len(scores),
+            'planned_comparisons':168,'completed_fits':len(scores)*5,
+            'comparisons_by_table':scores.groupby('table').size().to_dict(),
+            'all_completed_oof_scores_recomputed':True,'frozen_v1_inputs_unchanged':True,
+            'test_evaluated':False,'interpretation_executed':True,
+            'interpretation_status':'exploratory_not_causal_or_independent_validation',
+            'verification':'verification.json','cache_location':'results/followup_v2 (local only, gitignored)'},'status.json')
     print('Reports generated')
 if __name__=='__main__':main()

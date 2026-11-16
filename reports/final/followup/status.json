@@ -1,19 +1,27 @@
 {
-  "status": "partial_user_requested_checkpoint",
-  "completed_comparisons": 48,
+  "status": "complete_train_only_followup",
+  "completed_comparisons": 168,
   "planned_comparisons": 168,
-  "completed_fits": 240,
+  "completed_fits": 840,
   "comparisons_by_table": {
-    "corr_slope": 6,
+    "corr_slope": 14,
     "corr_window": 14,
+    "down_slope": 14,
+    "down_window": 14,
+    "rec_slope": 14,
+    "rec_window": 14,
     "up1_slope": 14,
-    "up1_window": 14
+    "up1_window": 14,
+    "up2_slope": 14,
+    "up2_window": 14,
+    "up3_slope": 14,
+    "up3_window": 14
   },
   "all_completed_oof_scores_recomputed": true,
   "frozen_v1_inputs_unchanged": true,
   "test_evaluated": false,
-  "interpretation_executed": false,
-  "tests_passed": 93,
-  "cache_location": "results/followup_v2 (local only, gitignored)",
-  "resume": "python src/model/followup.py compare"
+  "interpretation_executed": true,
+  "interpretation_status": "exploratory_not_causal_or_independent_validation",
+  "verification": "verification.json",
+  "cache_location": "results/followup_v2 (local only, gitignored)"
 }

@@ -71,7 +71,8 @@ def main():
                 if label not in cc:
                     numeric=pd.to_numeric(sx[label],errors='coerce').to_numpy(); valid=np.isfinite(numeric)
                     if valid.sum()>2 and len(np.unique(numeric[valid]))>1:
-                        rho=float(spearmanr(numeric[valid],values[valid]).statistic)
+                        if len(np.unique(values[valid]))>1:
+                            rho=float(spearmanr(numeric[valid],values[valid]).statistic)
                         # Quantile dependence summaries expose nonmonotonic patterns.
                         bins=pd.qcut(pd.Series(numeric),q=min(10,len(np.unique(numeric[valid]))),duplicates='drop')
                         for level in bins.dropna().unique():

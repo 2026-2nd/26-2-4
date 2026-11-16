@@ -1,0 +1,11 @@
+{
+  "frozen_v1_inputs_unchanged": true,
+  "test_dongs_excluded": true,
+  "group_isolation_passed": true,
+  "oof_scores_recomputed": 168,
+  "group_errors_recomputed": 282,
+  "selections_verified": 24,
+  "ridge_intervals_structurally_checked": 810,
+  "shap_additivity_passed": true,
+  "new_test_evaluation": false
+}

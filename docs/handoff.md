@@ -2,7 +2,9 @@
 
 ## 현재 상태
 
-EDA·셀 분석표·v1 모델 평가는 완료했다. EDA 후속 실험은 v1과 분리한다.
+EDA·셀 분석표·v1 모델 평가와 EDA 후속 비교·탐색적 해석을 완료했다.
+후속 비교는 168개 사양 비교·840회 적합이며, 12개 표의 SHAP와 단지 단위 1,000회 부트스트랩을 계산했다.
+후속 결과는 학습 내부 탐색이며 v1과 분리한다. 새로운 외부 검증이나 최종 유형 확정을 뜻하지 않는다.
 [전체 현황](../reports/final/README.md), [EDA 후속 비교](../reports/final/followup/README.md),
 [모델 해석](../reports/final/followup/interpretation.md)을 먼저 읽는다.
 

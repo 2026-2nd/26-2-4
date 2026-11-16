@@ -1,0 +1,25 @@
+﻿method,feature,up_sign,down_sign,corr_sign,without_corr,with_corr_agreement,status
+window,전용면적,-,+,+,방어형 후보,방어형 후보,exploratory_training_only_not_final
+window,세대수,+,-,-,공격형 후보,공격형 후보,exploratory_training_only_not_final
+window,연식_개월_a,+,-,0,공격형 후보,혼합 또는 판단 유보,exploratory_training_only_not_final
+window,재건축연한,0,0,-,효과 미확인,혼합 또는 판단 유보,exploratory_training_only_not_final
+window,층,-,0,-,혼합 또는 판단 유보,혼합 또는 판단 유보,exploratory_training_only_not_final
+window,세대당_주차대수,0,0,0,효과 미확인,효과 미확인,exploratory_training_only_not_final
+window,시공사_상위10,0,0,0,효과 미확인,효과 미확인,exploratory_training_only_not_final
+window,단지명_상위10브랜드,+,0,-,혼합 또는 판단 유보,혼합 또는 판단 유보,exploratory_training_only_not_final
+window,최근접_역_거리,0,0,0,효과 미확인,효과 미확인,exploratory_training_only_not_final
+window,1km내_노선수,+,+,0,전천후형 후보,혼합 또는 판단 유보,exploratory_training_only_not_final
+window,최근접_초등학교_거리,0,0,0,효과 미확인,효과 미확인,exploratory_training_only_not_final
+window,1km내_학교수,+,-,0,공격형 후보,혼합 또는 판단 유보,exploratory_training_only_not_final
+slope,전용면적,-,+,0,방어형 후보,혼합 또는 판단 유보,exploratory_training_only_not_final
+slope,세대수,+,-,-,공격형 후보,공격형 후보,exploratory_training_only_not_final
+slope,연식_개월_a,+,-,0,공격형 후보,혼합 또는 판단 유보,exploratory_training_only_not_final
+slope,재건축연한,0,0,0,효과 미확인,효과 미확인,exploratory_training_only_not_final
+slope,층,0,+,0,방어형 후보,혼합 또는 판단 유보,exploratory_training_only_not_final
+slope,세대당_주차대수,0,-,0,혼합 또는 판단 유보,혼합 또는 판단 유보,exploratory_training_only_not_final
+slope,시공사_상위10,0,0,0,효과 미확인,효과 미확인,exploratory_training_only_not_final
+slope,단지명_상위10브랜드,+,0,-,혼합 또는 판단 유보,혼합 또는 판단 유보,exploratory_training_only_not_final
+slope,최근접_역_거리,0,-,0,혼합 또는 판단 유보,혼합 또는 판단 유보,exploratory_training_only_not_final
+slope,1km내_노선수,+,+,0,전천후형 후보,혼합 또는 판단 유보,exploratory_training_only_not_final
+slope,최근접_초등학교_거리,0,0,0,효과 미확인,효과 미확인,exploratory_training_only_not_final
+slope,1km내_학교수,0,0,0,효과 미확인,효과 미확인,exploratory_training_only_not_final
