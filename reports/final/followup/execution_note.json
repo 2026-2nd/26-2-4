@@ -1,0 +1,6 @@
+{
+  "execution_only_change": "workers 2 to 6; CatBoost threads per model remain 2; no data, model or selection change",
+  "previous_config_sha256": "abe66e718421efc1b66a87c02b0e99b8450c38a9d5c72523e20f2c743334b2ee",
+  "current_config_sha256": "0e6a2ab40227a688bbf24757387a7ecfdae50759ec544c387568ad830a810e43",
+  "completed_baseline_records_at_migration": 4
+}

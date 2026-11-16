@@ -1,0 +1,19 @@
+{
+  "status": "partial_user_requested_checkpoint",
+  "completed_comparisons": 48,
+  "planned_comparisons": 168,
+  "completed_fits": 240,
+  "comparisons_by_table": {
+    "corr_slope": 6,
+    "corr_window": 14,
+    "up1_slope": 14,
+    "up1_window": 14
+  },
+  "all_completed_oof_scores_recomputed": true,
+  "frozen_v1_inputs_unchanged": true,
+  "test_evaluated": false,
+  "interpretation_executed": false,
+  "tests_passed": 93,
+  "cache_location": "results/followup_v2 (local only, gitignored)",
+  "resume": "python src/model/followup.py compare"
+}

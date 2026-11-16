@@ -16,7 +16,8 @@ def main():
     ci = pd.read_csv(output/'test_intervals_v1.csv')
     winners = pd.read_csv(output/'cv_winners_v1.csv').set_index('table')['selected_model']
     labels = {r['id']: r['name'] for r in config('regime')['regimes']}
-    lines = ['# 기본 모델 평가 결과 v1', '',
+    lines = ['# EDA 결과 반영 전 — 기본 모델 비교 결과', '',
+        '기존 규칙으로 확정한 v1 결과다. 이후 EDA 지적 사항의 비교는 [EDA 결과 반영 후](../followup/README.md)에 분리해 기록한다.', '',
         '법정동 test 64개를 모든 국면에 공통 적용했다. 모델 설정은 학습 내부 교차검증으로 확정한 뒤 test를 평가했다.', '',
         '## Test 가중 RMSE', '',
         '단위: 서울 대비 상대 로그 가격 변화 ×100. 같은 국면·방식 안에서 작을수록 좋다. `해석 대상`은 b1보다 RMSE가 낮은 모델이다.',

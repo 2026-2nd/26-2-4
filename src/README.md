@@ -15,11 +15,13 @@
 | `regime/` | 자체 지수, 국면 판정 규칙, 부트스트랩, 공식 지수 비교, 파일럿 |
 | `eda/` | 탐색적 자료 분석(기술 통계만): `python src/eda/run_eda.py` → `reports/eda/` |
 | `cells/` | `build_cells.py`: v5에서 창·기울기 셀×국면 표와 시점 특성·통제변수·제외 내역 생성 |
-| `model/` | `train.py`: 법정동 분할 고정, 학습 내부 5-fold 튜닝, 기본 모델 학습·일회 test 평가 |
-| `evaluate/`, `report/` | 예정: 특성 효과·유형·강건성. 현재 성능표는 `tools/report_models.py`로 생성 |
+| `model/` | `train.py`: v1 학습·일회 test 평가. `followup.py`: EDA 후속 학습 내부 비교. `interpret_followup.py`: 탐색적 계수·SHAP·유형 후보 |
+| 보고서 생성 도구 | `tools/report_models.py`: EDA 반영 전. `tools/report_followup.py`: EDA 반영 후 및 모델 해석 |
 
 
 ## 데이터 재생성 순서
+
+현재 결과를 읽는 경우 원자료부터 다시 실행할 필요는 없다. [단계별 보고서](../README.md)를 먼저 읽는다.
 
 원자료(`data/raw/`)가 있어야 한다(`docs/data.md` §2). 중간 산출물은 `data/processed/`에 쌓이고 Git에는 없다.
 
@@ -61,3 +63,20 @@ python tools/verify_cells.py
 완료된 실험의 성능은 `python tools/verify_models.py`로 검증한다.
 새 환경에서 모델 파일만 재생성하려면 `python tools/refit_models.py`를 실행한다.
 이 명령은 저장된 설정으로 학습 데이터에만 적합하며 test 평가·재튜닝을 하지 않는다.
+
+## EDA 결과 반영 후 비교와 모델 해석
+
+기존 v1을 재튜닝하지 않는다. 아래 명령은 기존 학습 동네에만 적용된다.
+
+```bash
+python src/model/followup.py audit
+python src/model/followup.py compare
+python tools/audit_duplicate_sensitivity.py
+python src/model/interpret_followup.py
+python tools/verify_followup.py
+python tools/plot_followup.py
+python tools/report_followup.py
+```
+
+요약 결과는 `reports/final/followup/`, 모델과 반복 실행 캐시는 Git 제외 `results/followup_v2/`에 저장한다.
+분할은 v1과 동일하며 test를 예측·평가하지 않는다. 자세한 한계는 후속 보고서에 있다.

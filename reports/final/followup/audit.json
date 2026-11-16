@@ -1,0 +1,8 @@
+{
+  "source_rows": 617592,
+  "parking_zero_source_rows": 4550,
+  "parking_gt3_source_rows": 3869,
+  "invalid_nonempty_approval_rows": 17,
+  "policy": "Zero parking is an unverified missing-value sensitivity, not a certified source correction.",
+  "experiment_population": "frozen train dongs only; retained v1 cells and targets unchanged"
+}

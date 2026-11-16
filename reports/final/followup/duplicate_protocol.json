@@ -1,0 +1,7 @@
+{
+  "train_eligible_trades": 483721,
+  "hypothetical_removed_trades": 3050,
+  "original_data_changed": false,
+  "test_used": false,
+  "meaning": "same-condition trades may be different real units; sensitivity only"
+}
