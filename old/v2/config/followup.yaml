@@ -1,0 +1,16 @@
+version: eda_followup_v2
+seed: 20261116
+methods: [window, slope]
+models: [ridge, catboost]
+variants: [baseline, quality, parking_cap, without_sparse, log_numeric, extended, equal_weight]
+selection_variants: [baseline, quality, parking_cap, without_sparse, log_numeric, extended]
+selection_metric: pooled_weighted_train_oof_rmse
+hyperparameters: frozen_v1_selected_parameters_no_new_grid
+catboost_iterations: frozen_v1_final_iterations_same_for_all_variants
+test_policy: never_predict_or_score_test_in_followup
+workers: 6
+catboost_threads: 2
+bootstrap_replicates: 1000
+shap_max_rows: 1000
+output: old/v2/reports
+artifacts: results/followup_v2

@@ -5,6 +5,10 @@ on:
     branches: ['model/training']
     paths:
       - 'src/model/nested_v3.py'
+      - 'src/model/common.py'
+      - 'src/model/design.py'
+      - 'data/splits/**'
+      - 'config/v3.yaml'
       - '.github/workflows/nested-v3.yml'
       - 'tests/test_nested_v3.py'
 permissions:

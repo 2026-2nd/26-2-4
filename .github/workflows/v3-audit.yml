@@ -5,6 +5,10 @@ on:
     branches: ['codex/v3-leakage-audit']
     paths:
       - 'src/model/nested_v3.py'
+      - 'src/model/common.py'
+      - 'src/model/design.py'
+      - 'data/splits/**'
+      - 'config/v3.yaml'
       - 'src/cells/build_cells.py'
       - 'tools/run_v3_audit.py'
       - '.github/workflows/v3-audit.yml'

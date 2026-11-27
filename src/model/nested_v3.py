@@ -15,8 +15,8 @@ from sklearn.linear_model import Ridge
 from sklearn.model_selection import GroupKFold
 from threadpoolctl import threadpool_limits
 
-import train as v1
-import followup as f
+import common as v1
+import design as f
 
 ROOT = v1.ROOT
 OUT = ROOT / 'results' / 'nested_v3'
@@ -42,7 +42,7 @@ FAMILIES = tuple(GRID)
 
 
 def eligible_groups():
-    a = pd.read_csv(ROOT/'reports/final/models/dong_assignments_v1.csv')
+    a = pd.read_csv(ROOT/'data/splits/dong_assignments_v3.csv')
     assert a.dong_id.is_unique
     train = set(a.loc[a.split.eq('train'), 'dong_id'])
     excluded = set(a.loc[a.split.eq('test'), 'dong_id'])

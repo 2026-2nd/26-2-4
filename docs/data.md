@@ -8,7 +8,7 @@
 | 행 | 617,592 (거래 1건 = 1행, 서울 아파트 매매, 계약일 2017-01-01 ~ 2026-10-30) |
 | 열 | 43 |
 | 인코딩 | UTF-8-SIG, 빈 값은 빈 문자열 |
-| 해시 | `reports/final/sha256.json` (`tools/verify_final.py`가 확인) |
+| 해시 | `tools/frozen_files.json` (`tools/verify_final.py`가 확인). 과거 기록은 `old/v1/sha256.json`에 보존 |
 
 압축 풀기: `xz -dk data/final/아파트_실거래_전처리_2017_2026_v5.csv.xz`. pandas는 압축 파일을 바로 읽을 수 있다.
 

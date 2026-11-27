@@ -1,82 +1,33 @@
-# src
+# V3 실행 코드
 
-계산은 모두 여기서 한다. 규칙 값은 `config/`, 확정 결과는 `reports/final/`·`data/`에 둔다.
-모든 스크립트는 **저장소 최상위에서** `python src/<폴더>/<파일>.py`로 실행한다. 키가 필요한 스크립트는 환경변수에서만 읽는다.
+모든 명령은 저장소 최상위에서 실행한다. [현재 결과](../README.md) · [검증 규칙](../docs/nested_v3.md)
 
-## 폴더
-
-| 폴더 | 내용 |
+| 파일 | 역할 |
 |---|---|
-| `pipeline/` | 실거래 수집·검증, 호실·시점 특성, K-apt 단지 연결(crosswalk v1→v3), 계약 시점 역·학교 거리, 한국어 데이터셋. 모듈끼리 서로 import하므로 한 폴더에 둔다 |
-| `geo/` | 카카오 지오코딩(내 PC에서 실행)과 좌표 반영 → v3 |
-| `features/` | 시공사·브랜드·토지거래허가구역 |
-| `dataset/` | v3 → v4 학교 열 정리 |
-| `buildreg/` | 건축물대장 조회(내 PC에서 실행)와 반영 → v5 |
-| `regime/` | 자체 지수, 국면 판정 규칙, 부트스트랩, 공식 지수 비교, 파일럿 |
-| `eda/` | 탐색적 자료 분석(기술 통계만): `python src/eda/run_eda.py` → `reports/eda/` |
-| `cells/` | `build_cells.py`: v5에서 창·기울기 셀×국면 표와 시점 특성·통제변수·제외 내역 생성 |
-| `model/` | `train.py`: v1 학습·일회 test 평가. `followup.py`: EDA 후속 학습 내부 비교. `interpret_followup.py`: 탐색적 계수·SHAP·유형 후보 |
-| 보고서 생성 도구 | `tools/report_models.py`: EDA 반영 전. `tools/report_followup.py`: EDA 반영 후 및 모델 해석 |
-
-
-## 데이터 재생성 순서
-
-현재 결과를 읽는 경우 원자료부터 다시 실행할 필요는 없다. [단계별 보고서](../README.md)를 먼저 읽는다.
-
-원자료(`data/raw/`)가 있어야 한다(`docs/data.md` §2). 중간 산출물은 `data/processed/`에 쌓이고 Git에는 없다.
-
-| 단계 | 스크립트 | 출력 |
-|---|---|---|
-| 1. 2020~2026 수집·검증 | `pipeline/collect_seoul_sales.py` → `verify_seoul_collection.py` → `finalize_seoul_collection.py` | `data/raw/seoul_sales_2020_2026/`, `reports/seoul_sales_2020_2026/` |
-| 2. 호실·시점 특성 | `pipeline/build_unit_features.py` → `build_market_features.py` | `data/processed/` |
-| 3. K-apt 단지 연결 | `pipeline/collect_complex.py` → `build_internal_features.py` → `finalize_internal_features.py` → `apply_internal_static_assumption.py` → `improve_complex_crosswalk.py` → `apply_crosswalk_v2.py` → `improve_complex_crosswalk_v3.py` → `apply_crosswalk_v3.py` | `reports/crosswalk_v3/`, `data/processed/` |
-| 4. 2017~2019 연장 | `pipeline/extend_2017_2019.py` (같은 규칙으로 새 연도만 판정) | `..._2017_2026_internal_static_assumption_crosswalk_v3.csv` |
-| 5. 좌표·역·학교 | `geo/geocode_kakao.py`(내 PC) → `geo/apply_geocode.py` (내부에서 `pipeline/build_access_features_v2.py`, `build_korean_dataset_v2.py` 호출) | `data/final/…_v3.csv` |
-| 6. 브랜드·토허 | `features/add_brand_tohuh.py` (5단계 전에 실행해 두면 v3에 합쳐짐) | `data/features/` |
-| 7. 학교 열 정리 | `dataset/make_v4_school_columns.py` | `data/final/…_v4.csv` |
-| 8. 건축물대장 | `buildreg/fetch_building_register.py`(내 PC) → `buildreg/apply_building_register.py` | `data/final/…_v5.csv`, `data/buildreg/apply_report.json` |
-| 9. 압축 | `xz -T0 -6 -k data/final/아파트_실거래_전처리_2017_2026_v5.csv` | `data/final/…_v5.csv.xz` (커밋) |
-
-## 국면
-
-```
-python src/regime/build_index_2017_2026.py   # 자체 지수 (data/processed 필요)
-python src/regime/bootstrap_regime.py        # 단지 부트스트랩 200회
-python src/regime/compare_official.py        # 공식 지수 비교, 확정 국면 → data/regime/official_comparison.json
-```
-
-판정 규칙은 `regime/turning_points.py` 한 곳에만 있다. `tests/test_regime.py`가 저장된 지수로 확정 국면이 다시 나오는지 확인한다.
-
-## 셀×국면 표
-
-```
-python src/cells/build_cells.py
-python tools/verify_cells.py
-```
-
-입력은 커밋된 v5·자체지수·시설 이력만 필요하다. 별도 API 키나 `data/processed`는 필요 없다.
-출력과 표본 변화는 `reports/final/cells/README.md`에 설명했다. 모델 학습은 하지 않는다.
-
-## 모델 학습·평가
-
-실행 순서와 고정 규칙은 `reports/final/models/README.md`에 있다.
-완료된 실험의 성능은 `python tools/verify_models.py`로 검증한다.
-새 환경에서 모델 파일만 재생성하려면 `python tools/refit_models.py`를 실행한다.
-이 명령은 저장된 설정으로 학습 데이터에만 적합하며 test 평가·재튜닝을 하지 않는다.
-
-## EDA 결과 반영 후 비교와 모델 해석
-
-기존 v1을 재튜닝하지 않는다. 아래 명령은 기존 학습 동네에만 적용된다.
+| [model/nested_v3.py](model/nested_v3.py) | 학습 전용 데이터 생성, 중첩 CV, 재적합, 예측 검증 |
+| [model/common.py](model/common.py) | 설정·특성 목록·가중 성능 지표·저장 함수 |
+| [model/design.py](model/design.py) | 특성 구성·학습 fold 전처리 |
+| [eda/](eda/) | 학습 자료에 재사용하는 EDA 모듈 |
+| [cells/build_cells.py](cells/build_cells.py) | 셀 목표·시점 특성·통제변수 계산 |
+| [../tools/run_v3_audit.py](../tools/run_v3_audit.py) | 전체 변수/현재값 제외 구성의 짝지은 비교 |
 
 ```bash
-python src/model/followup.py audit
-python src/model/followup.py compare
-python tools/audit_duplicate_sensitivity.py
-python src/model/interpret_followup.py
-python tools/verify_followup.py
-python tools/plot_followup.py
-python tools/report_followup.py
+python -m pytest -q
+python tools/verify_final.py
+python src/model/nested_v3.py build --output results/leakage_audit_v3
+python tools/run_v3_audit.py --output results/leakage_audit_v3 --workers 4
 ```
 
-요약 결과는 `reports/final/followup/`, 모델과 반복 실행 캐시는 Git 제외 `results/followup_v2/`에 저장한다.
-분할은 v1과 동일하며 test를 예측·평가하지 않는다. 자세한 한계는 후속 보고서에 있다.
+개별 분석표 실행:
+
+```bash
+python src/model/nested_v3.py evaluate --table down_window --output results/leakage_audit_v3
+python src/model/nested_v3.py evaluate --table down_window --feature-policy without_snapshot --output results/leakage_audit_v3
+```
+
+같은 출력 경로에 완료 결과가 있으면 덮어쓰지 않는다. 변경 후에는 새 출력 경로에서 build부터 시작한다.
+V3는 `old/`의 실험 모듈을 import하지 않는다. 고정 동 분할은 `data/splits/`에서 읽는다.
+
+`pipeline/`, `geo/`, `features/`, `dataset/`, `buildreg/`, `regime/`는 공통 원자료 생성 기반이다.
+이 모듈의 버전 이름을 모델 실험 버전과 혼동하지 않는다.
+V1/V2 실행·결과는 [old 안내](../old/README.md)에서 확인한다.

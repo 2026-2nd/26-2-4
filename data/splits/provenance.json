@@ -1,0 +1,6 @@
+{
+  "source": "old/v1/models/dong_assignments_v1.csv",
+  "source_commit": "5cba3abe46701b0b5bfadfd8d58e7b4a70962612",
+  "sha256": "6a6bff0d740442879ac073188f9037ae8827d50f460912718945d24adaf29c2a",
+  "purpose": "V3 exclusion split; identical assignment, no resampling"
+}

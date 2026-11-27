@@ -1,16 +1,18 @@
 """확정 자료의 해시를 확인한다.
 
-    python tools/verify_final.py            # reports/final/sha256.json과 비교
+    python tools/verify_final.py            # tools/frozen_files.json과 비교
     python tools/verify_final.py --update   # 확정 자료를 바꾼 뒤 해시를 다시 기록 (PR에 이유를 적을 것)
 
-대상: data/final/, data/regime/, data/external/, config/*.yaml, reports/final/ (README·sha256.json 제외)
+대상: 공통 확정 자료, V3 분할·결과, old/v1·v2의 보존 결과 및 설정. 원래 old/v1/sha256.json은 보존한다.
 """
 import hashlib, json, pathlib, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-OUT = ROOT / 'reports/final/sha256.json'
-TARGETS = ['data/final', 'data/regime', 'data/external', 'config', 'reports/final']
-SKIP = {'reports/final/sha256.json', 'reports/final/README.md'}
+OUT = ROOT / 'tools/frozen_files.json'
+TARGETS = ['data/final', 'data/regime', 'data/external', 'data/splits', 'config',
+           'old/v1/config', 'old/v2/config', 'old/v1/cells', 'old/v1/models',
+           'old/v2/reports', 'old/v2/eda', 'reports/leakage_audit_v3']
+SKIP = set()
 
 
 def files():

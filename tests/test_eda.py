@@ -1,4 +1,4 @@
-"""EDA 검증: (1) 함수 단위 규칙, (2) 실제 파일의 크기·건수, (3) 저장된 reports/eda 숫자가 재계산과 같은지.
+"""EDA 검증: (1) 함수 단위 규칙, (2) 실제 파일의 크기·건수, (3) 저장된 old/v2/eda 숫자가 재계산과 같은지.
 
 실제 파일(18MB xz)을 한 번 읽는다(약 10초). EDA는 config·원본 데이터를 바꾸지 않는다는 것도 확인한다.
 """
@@ -15,7 +15,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from eda import coverage, load, price, quality, regime  # noqa: E402
 
-EDA = ROOT / 'reports/eda'
+EDA = ROOT / 'old/v2/eda'
 _CACHE = {}
 
 
@@ -113,15 +113,15 @@ class RealData(unittest.TestCase):
             self.assertEqual(int(d[col].isna().sum()), n, col)
 
     def test_original_file_untouched(self):
-        """EDA는 원본·config를 바꾸지 않는다(reports/final/sha256.json과 같은 해시)."""
+        """EDA는 원본·config를 바꾸지 않는다(old/v1/sha256.json과 같은 해시)."""
         import hashlib
-        saved = json.loads((ROOT / 'reports/final/sha256.json').read_text(encoding='utf-8'))
+        saved = json.loads((ROOT / 'old/v1/sha256.json').read_text(encoding='utf-8'))
         for rel in [load.DATA.relative_to(ROOT).as_posix(), 'config/regime.yaml', 'config/target.yaml', 'config/features.yaml']:
             self.assertEqual(hashlib.sha256((ROOT / rel).read_bytes()).hexdigest(), saved[rel], rel)
 
 
 class SavedOutputs(unittest.TestCase):
-    """reports/eda에 저장된 숫자 = 지금 다시 계산한 숫자."""
+    """old/v2/eda에 저장된 숫자 = 지금 다시 계산한 숫자."""
 
     def test_summary_matches_data(self):
         d, _ = data()

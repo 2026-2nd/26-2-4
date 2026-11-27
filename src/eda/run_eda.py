@@ -1,9 +1,9 @@
-"""EDA 전체 실행: 표(reports/eda/tables), 그림(reports/eda/figures), 요약(reports/eda/summary.json), 보고서.
+"""EDA 전체 실행: 표(old/v2/eda/tables), 그림(old/v2/eda/figures), 요약(old/v2/eda/summary.json), 보고서.
 
     python src/eda/run_eda.py            # 저장소 최상위에서
     python src/eda/run_eda.py --no-figures
 
-원본 데이터는 읽기만 한다. reports/final/과 config/는 건드리지 않는다.
+원본 데이터는 읽기만 한다. old/v1/과 config/는 건드리지 않는다.
 """
 import argparse
 import json
@@ -17,7 +17,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 from eda import coverage, load, price, quality, regime  # noqa: E402
 
 ROOT = load.ROOT
-OUT = ROOT / 'reports/eda'
+OUT = ROOT / 'old/v2/eda'
 PROFILE_COLS = ['거래금액_만원', '㎡당가_만원', '전용면적(㎡)', '층', '건축년도', '건물연식', '연식_개월', '세대수',
                 '세대당_주차대수', '최근접_역_거리(m)', '1km내_노선수', '최근접_초등학교_거리(m)', '1km내_학교수']
 COMPOSITION_METRICS = ['동남권(강남·서초·송파·강동) 비중(%)', '전용 60㎡ 이하 비중(%)', '신축(5년 이하) 비중(%)', '30년 초과 비중(%)',

@@ -1,7 +1,0 @@
-# 상태: 2026-11-11 모델링 진행 요청에 따라 기존 초안 값을 그대로 고정. 결과를 보고 바꾸지 않는다.
-# 법정동 단위 분할 (이웃 단지 정보 누출 방지)
-group: [자치구, 법정동]
-test_share: 0.20          # 모든 국면 공통 최종 test, 마지막에 한 번만 평가
-seed: 20261103
-cv: {method: GroupKFold, n_splits: 5}   # 학습 80% 안에서 하이퍼파라미터·모델 선택
-save_to: reports/final/split_test_dongs.csv

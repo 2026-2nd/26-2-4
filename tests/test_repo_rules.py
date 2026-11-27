@@ -32,12 +32,12 @@ class RepoRules(unittest.TestCase):
         self.assertEqual(hits, [])
 
     def test_type_rule_covers_all_types(self):
-        t = yaml.safe_load((ROOT / 'config/types.yaml').read_text(encoding='utf-8'))
+        t = yaml.safe_load((ROOT / 'old/v2/config/types.yaml').read_text(encoding='utf-8'))
         self.assertEqual(set(t['types']), {'전천후형', '방어형', '공격형', '취약형', '국면무관'})
         self.assertEqual(t['aggregate']['up_effect']['min_agree'], 2)
 
     def test_split_is_by_dong(self):
-        s = yaml.safe_load((ROOT / 'config/split.yaml').read_text(encoding='utf-8'))
+        s = yaml.safe_load((ROOT / 'old/v1/config/split.yaml').read_text(encoding='utf-8'))
         self.assertEqual(s['group'], ['자치구', '법정동'])
         self.assertAlmostEqual(s['test_share'], 0.2)
 

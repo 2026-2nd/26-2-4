@@ -52,8 +52,8 @@ def main():
     tables = sorted((output/'tables').glob('*.csv.xz'))
     if len(tables) != 12:
         p.error('Build 12 input tables with nested_v3.py build --output first')
-    sources = [ROOT/'src/model/nested_v3.py',ROOT/'src/model/followup.py',
-               ROOT/'src/model/train.py',ROOT/'src/cells/build_cells.py',pathlib.Path(__file__)]
+    sources = [ROOT/'src/model/nested_v3.py',ROOT/'src/model/design.py',
+               ROOT/'src/model/common.py',ROOT/'src/cells/build_cells.py',pathlib.Path(__file__)]
     sources += sorted((ROOT/'config').glob('*.yaml')) + tables
     manifest = dict(protocol='paired_snapshot_ablation_v1', policies=['full','without_snapshot'],
         selection='inner CV only; compare inner_selected outer predictions',

@@ -1,6 +1,6 @@
-"""reports/eda/EDA_report_ko.md를 만든다.
+"""old/v2/eda/EDA_report_ko.md를 만든다.
 
-본문의 숫자는 모두 reports/eda/summary.json과 reports/eda/tables/*.csv에서 읽어 넣는다(손으로 적지 않는다).
+본문의 숫자는 모두 old/v2/eda/summary.json과 old/v2/eda/tables/*.csv에서 읽어 넣는다(손으로 적지 않는다).
 해석 문장은 사람이 쓴 것이며, 숫자가 바뀌면 문장의 방향이 여전히 맞는지 다시 확인해야 한다.
 """
 import json
@@ -105,8 +105,8 @@ def write(out):
     A('')
     A(f'기계학습기초 4조 · 탐색적 자료 분석(EDA) · 대상: `{S["데이터"]["파일"]}`')
     A('')
-    A('> 이 문서의 숫자는 모두 `python src/eda/run_eda.py`가 실제 파일에서 계산해 `reports/eda/summary.json`과 '
-      '`reports/eda/tables/*.csv`에 저장한 값이다. 이 문서는 그 파일을 읽어 `src/eda/report.py`가 만든다.')
+    A('> 이 문서의 숫자는 모두 `python src/eda/run_eda.py`가 실제 파일에서 계산해 `old/v2/eda/summary.json`과 '
+      '`old/v2/eda/tables/*.csv`에 저장한 값이다. 이 문서는 그 파일을 읽어 `src/eda/report.py`가 만든다.')
     A('>')
     A('> **범위.** 기술 통계만 다룬다. 국면 정의(`config/regime.yaml`), 목표 변수 y(`config/target.yaml`), 특성 목록(`config/features.yaml`), '
       '모델 학습은 건드리지 않았다. 셀×국면 표와 y는 만들지 않았다(모델링 담당 범위).')
@@ -402,7 +402,7 @@ def write(out):
     A('')
     A('1. **EDA 통계는 모델 입력이 아니다.** 이 보고서의 가격 통계(거래금액·㎡당가·상대 가격)는 y의 재료이므로 특성으로 쓰지 않는다. 특성 목록은 `config/features.yaml`에 고정되어 있고 이 EDA로 바꾸지 않았다.')
     A('2. **국면은 사후 구분이다.** 경계는 2026년까지의 지수를 본 뒤 정해졌다. 국면별 통계는 과거를 설명할 뿐, 그 시점에 알 수 있던 정보가 아니다.')
-    A('3. **이 EDA는 전체 자료를 봤다(test 법정동 포함).** 다룬 것은 거래 단위의 수준·구성·결측이고 y와 특성의 관계는 보지 않았다. 그래도 이 결과를 근거로 특성·하이퍼파라미터를 고르면 test 정보가 새는 것이므로, 선택은 학습 80% 안에서만 한다(`config/split.yaml`).')
+    A('3. **이 EDA는 전체 자료를 봤다(test 법정동 포함).** 다룬 것은 거래 단위의 수준·구성·결측이고 y와 특성의 관계는 보지 않았다. 그래도 이 결과를 근거로 특성·하이퍼파라미터를 고르면 test 정보가 새는 것이므로, 선택은 학습 80% 안에서만 한다(`old/v1/config/split.yaml`).')
     A('4. **계약일 기준 값과 a월 기준 값을 구분한다.** `건물연식`, `연식_개월`, 역·학교 거리, 토지거래허가구역은 계약일 기준이다. 모델에는 국면 시작 월 a 기준으로 다시 계산한 값이 들어간다.')
     A('5. **단지 내부값은 현재값이다.** 과거 거래에 미래 시점의 단지 정보가 붙어 있다. 변하지 않는 값이라는 가정 아래에서만 쓸 수 있다.')
     A('6. **원시 가격을 국면끼리 비교하지 않는다.** 거래 구성이 국면마다 다르다(§3.3).')
@@ -425,10 +425,10 @@ def write(out):
     A('| 위치 | 내용 |')
     A('|---|---|')
     A('| `src/eda/` | 계산 코드(`load`, `quality`, `price`, `regime`, `coverage`, `plots`, `report`, `run_eda`) |')
-    A(f'| `reports/eda/tables/` | 표 {len(list((out / "tables").glob("*.csv")))}개(CSV, UTF-8-SIG). 앞 번호 01 품질 · 02 가격 · 03 국면 · 04 특성 |')
-    A(f'| `reports/eda/figures/` | 그림 {len(list((out / "figures").glob("*.png")))}개(PNG) |')
-    A('| `reports/eda/summary.json` | 핵심 숫자(테스트가 실제 파일과 다시 대조) |')
-    A('| `notebooks/02_EDA.ipynb` | 위 표·그림을 읽어 보여 주는 노트북(계산 없음) |')
+    A(f'| `old/v2/eda/tables/` | 표 {len(list((out / "tables").glob("*.csv")))}개(CSV, UTF-8-SIG). 앞 번호 01 품질 · 02 가격 · 03 국면 · 04 특성 |')
+    A(f'| `old/v2/eda/figures/` | 그림 {len(list((out / "figures").glob("*.png")))}개(PNG) |')
+    A('| `old/v2/eda/summary.json` | 핵심 숫자(테스트가 실제 파일과 다시 대조) |')
+    A('| `old/v2/notebooks/02_EDA.ipynb` | 위 표·그림을 읽어 보여 주는 노트북(계산 없음) |')
     A('| `tests/test_eda.py` | 함수 단위 테스트 + 저장된 숫자의 재계산 대조 |')
     A('')
     A('다시 만들기: `python src/eda/run_eda.py` (약 1분).')

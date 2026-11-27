@@ -3,7 +3,7 @@ import sys
 import numpy as np
 import pandas as pd
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT/'src/model'))
+sys.path[:0] = [str(ROOT/'old/v1'), str(ROOT/'old/v2')]
 import followup as f
 
 def fixture():

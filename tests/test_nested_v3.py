@@ -79,3 +79,26 @@ def test_validation_values_do_not_change_training_transform():
     pd.testing.assert_frame_equal(x, xx)
     prep.transform(z)
     np.testing.assert_array_equal(before, prep.transform(xx))
+
+
+def test_extracted_v3_helpers_match_legacy_calculations():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('legacy_design', ROOT/'old/v2/followup.py')
+    legacy = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(legacy)
+    d = sample()
+    for variant in n.VARIANTS:
+        actual, cats = n.f.build_design(d, variant)
+        expected, legacy_cats = legacy.build_design(d, variant)
+        pd.testing.assert_frame_equal(actual, expected)
+        assert cats == legacy_cats
+        np.testing.assert_allclose(n.f.prep(actual, cats).fit_transform(actual),
+                                   legacy.prep(expected, legacy_cats).fit_transform(expected))
+    prediction = np.array([1.2, 1.8, 3.1, 3.8])
+    assert n.v1.metric_values(d.y, prediction, d.weight) == pytest.approx(
+        legacy.v1.metric_values(d.y, prediction, d.weight))
+
+
+def test_v3_frozen_split_is_exact_archive_copy():
+    assert (ROOT/'data/splits/dong_assignments_v3.csv').read_bytes() == (
+        ROOT/'old/v1/models/dong_assignments_v1.csv').read_bytes()

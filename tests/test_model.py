@@ -8,7 +8,7 @@ import pytest
 from scipy.stats import spearmanr
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location('training', ROOT/'src/model/train.py')
+spec = importlib.util.spec_from_file_location('training', ROOT/'old/v1/train.py')
 training = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(training)
 

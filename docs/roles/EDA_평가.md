@@ -16,14 +16,14 @@
 | 국면별 건수·분포 비교·거래 구성(선택 편향)·단지 등장 여부 | 위와 같음 | `src/eda/regime.py` |
 | 세대수·주차·난방·복도·역·학교의 결측을 국면·자치구·건축 시기별로 | 위와 같음 | `src/eda/coverage.py` |
 | 그림 11장(한국어 라벨) | 위 표 | `src/eda/plots.py` |
-| 보고서 생성(숫자는 저장된 표에서 읽음) | `reports/eda/tables`, `summary.json` | `src/eda/report.py` |
+| 보고서 생성(숫자는 저장된 표에서 읽음) | `old/v2/eda/tables`, `summary.json` | `src/eda/report.py` |
 | 전체 실행 | | `python src/eda/run_eda.py` |
 | 검증 | 실제 파일 재계산 대조 | `tests/test_eda.py` (22개) |
-| 노트북(계산 없음, 표·그림 표시) | `reports/eda/` | `notebooks/02_EDA.ipynb` |
+| 노트북(계산 없음, 표·그림 표시) | `old/v2/eda/` | `old/v2/notebooks/02_EDA.ipynb` |
 
 ## 3. 주요 결과
 
-숫자는 모두 `reports/eda/summary.json`과 `reports/eda/tables/*.csv`에서 가져왔다. 해석은 `reports/eda/EDA_report_ko.md`.
+숫자는 모두 `old/v2/eda/summary.json`과 `old/v2/eda/tables/*.csv`에서 가져왔다. 해석은 `old/v2/eda/EDA_report_ko.md`.
 
 | 항목 | 값 | 출처 표 |
 |---|---|---|
@@ -50,7 +50,7 @@
 
 ## 5. 다른 단계에 넘긴 것
 
-- `reports/eda/EDA_report_ko.md` — §5 해석할 때 지킬 것, §6 모델링 담당 확인 사항
-- `reports/eda/tables/` 59개, `reports/eda/figures/` 11개, `reports/eda/summary.json`
-- `notebooks/02_EDA.ipynb`
+- `old/v2/eda/EDA_report_ko.md` — §5 해석할 때 지킬 것, §6 모델링 담당 확인 사항
+- `old/v2/eda/tables/` 59개, `old/v2/eda/figures/` 11개, `old/v2/eda/summary.json`
+- `old/v2/notebooks/02_EDA.ipynb`
 - 발표용으로 쓸 만한 그림: `01_월별_거래건수_국면.png`, `08_국면별_거래구성.png`, `09_특성_결측률_국면_연도.png`

@@ -16,3 +16,9 @@ reports/final/*.json -text
 # 데이터와 점검 기록은 줄바꿈도 원본 그대로
 data/** -text
 reports/** -text
+old/v1/cells/** -text
+old/v1/models/** -text
+old/v2/reports/** -text
+old/v2/eda/** -text
+old/v1/*.csv -text
+old/v1/*.json -text
