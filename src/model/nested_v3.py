@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import joblib
 import pathlib
 import sys
 
@@ -82,26 +83,85 @@ def fit_design(train, other, variant):
     return x, z, cats, zero_as_missing
 
 
-def fit_predict(train, validation, family, params, variant):
-    if set(train.dong_id) & set(validation.dong_id):
-        raise ValueError('Group overlap')
-    x, z, cats, quality = fit_design(train, validation, variant)
+def fit_model(train, x, cats, family, params):
+    """Fit only the supplied fitting rows; no evaluation data/early stopping."""
+    prep = None
     if family == 'catboost':
         model = CatBoostRegressor(**params, random_seed=SEED, thread_count=2,
                                   loss_function='RMSE', verbose=False,
                                   allow_writing_files=False)
         model.fit(Pool(x, train.y, weight=train.weight, cat_features=cats))
-        p = model.predict(z)
     else:
         prep = f.prep(x, cats)
-        xt, xv = prep.fit_transform(x), prep.transform(z)
+        xt = prep.fit_transform(x)
         model = Ridge(**params) if family == 'ridge' else RandomForestRegressor(
             **params, random_state=SEED, n_jobs=2)
         model.fit(xt, train.y, sample_weight=train.weight)
-        p = model.predict(xv)
+    return model, prep
+
+
+def fit_predict(train, validation, family, params, variant):
+    if set(train.dong_id) & set(validation.dong_id):
+        raise ValueError('Group overlap')
+    x, z, cats, quality = fit_design(train, validation, variant)
+    model, prep = fit_model(train, x, cats, family, params)
+    p = model.predict(z if prep is None else prep.transform(z))
     if not np.isfinite(p).all():
         raise ValueError('Non-finite predictions')
     return np.asarray(p), quality
+
+
+def final_refit(d, scores, folder):
+    """Freeze selections, refit only eligible training dongs, and describe effects."""
+    choices, importance, coefs = [], [], []
+    winner = choose(scores)[0]
+    for family in FAMILIES:
+        fam, variant, i = choose(scores, family)
+        x, _, cats, zero = fit_design(d, d, variant)
+        model, prep = fit_model(d, x, cats, fam, GRID[fam][i])
+        choices.append(dict(family=fam,variant=variant,params=GRID[fam][i],
+                            zero_as_missing=zero,selected_overall=fam==winner))
+        # Store the actual final selected model and its fitted preprocessing.
+        if fam == winner:
+            joblib.dump(dict(model=model,preprocessor=prep,feature_names=list(x.columns),
+                             categorical=cats,variant=variant,zero_as_missing=zero,
+                             family=fam,params=GRID[fam][i]),folder/'selected_model.joblib',compress=3)
+        if fam == 'ridge':
+            for name,value in zip(prep.get_feature_names_out(),model.coef_):
+                coefs.append(dict(feature=name,coefficient=float(value),variant=variant))
+        if fam == 'catboost':
+            rng=np.random.default_rng(SEED)
+            ix=np.sort(rng.choice(len(d),min(1000,len(d)),replace=False))
+            sample=x.iloc[ix]
+            values=model.get_feature_importance(Pool(sample,cat_features=cats),
+                                                type='ShapValues',thread_count=2)
+            if not np.allclose(values.sum(axis=1),model.predict(sample),rtol=1e-6,atol=1e-6):
+                raise ValueError('SHAP additivity failed')
+            for j,name in enumerate(x.columns):
+                importance.append(dict(feature=name,
+                    mean_abs_shap=float(np.average(abs(values[:,j]),weights=d.weight.iloc[ix])),
+                    variant=variant,train_sample_rows=len(ix)))
+    v1.save_json(choices,folder/'final_refit_choices.json')
+    v1.save_csv(pd.DataFrame(coefs),folder/'train_ridge_coefficients.csv')
+    v1.save_csv(pd.DataFrame(importance).sort_values('mean_abs_shap',ascending=False),
+                folder/'train_shap_importance.csv')
+
+
+def verify_saved(folder, expected_groups, excluded):
+    """Independently check persisted predictions, scores and group isolation."""
+    pred=pd.read_csv(folder/'outer_predictions.csv.xz')
+    metrics=pd.read_csv(folder/'metrics.csv')
+    assert pred.cell_id.is_unique and set(pred.dong_id)<=expected_groups
+    assert not set(pred.dong_id)&excluded
+    assert pred.groupby('dong_id').outer_fold.nunique().eq(1).all()
+    assert set(pred.outer_fold)==set(range(OUTER))
+    for row in metrics.itertuples():
+        calculated=v1.metric_values(pred.y,pred[row.model],pred.weight)
+        for k,val in calculated.items():
+            assert np.isclose(val,getattr(row,k),rtol=1e-8,atol=1e-8,equal_nan=True), (row.model,k)
+    v1.save_json(dict(group_isolation=True,excluded_test_dongs=True,
+                      recomputed_model_scores=len(metrics),rows=len(pred),
+                      independent_external_test=False),folder/'verification.json')
 
 
 def build():
@@ -258,7 +318,9 @@ def evaluate(key):
     v1.save_json(dict(table=key,family=family,variant=variant,params=GRID[family][i],
                       train_cells=len(d),outer_folds=OUTER,inner_folds=INNER,
                       independently_unseen_test=False,
-                      note='Final selection only; no fresh holdout available.'),folder/'final_choice.json')
+                      note='Selected on training dongs; no fresh holdout available.'),folder/'final_choice.json')
+    final_refit(d,final,folder)
+    verify_saved(folder,train_groups,excluded)
 
 
 def main():
