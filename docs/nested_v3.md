@@ -25,11 +25,17 @@ python src/model/nested_v3.py evaluate --table down_window
 
 ## 남은 일
 
-- V3 실행 결과와 검증 기록 검토.
-- 최종 재적합 및 학습 전용 SHAP 실행 결과 검토, 특성 방향 및 유형 안정성 분석(부트스트랩 포함).
+- 추가 점검의 24개 평가·예측 검증·짝지은 집계는 완료했다. 아래 보고서에 수치를 기록했다.
+- 최종 재적합 및 학습 전용 SHAP 결과의 특성 방향 해석, 유형 안정성 추가 분석.
 - 기존 자료와 겹치지 않는 미노출 데이터로 새 검증 설계와 평가. 새 국면 예측은 시점 누출을 막는 별도 설계 필요.
 
 ## 2026-11-27 추가 누수 점검 및 현재값 제외 비교
+
+Actions에서 전체 테스트 101개, 기존 확정 파일 214개 해시 확인, 24개 평가 및
+집계가 통과했다. 현재값 제외 시 12개 표 모두 RMSE가 증가했다(0.47~13.88%).
+두 절차의 예측 순위 상관은 0.818~0.908이다. 오차 차이의 조건부 95% 구간은
+11개 표에서 전체가 양수이고, `corr_slope`에서는 0을 포함한다. 이는 해당
+변수 묶음에 대한 예측 의존성 결과이며, 차이가 전부 누수라는 증거는 아니다.
 
 V1/V2와 기존 V3 결과를 보존한다. 새 비교는 `results/leakage_audit_v3/`에
 분리하며, 같은 셀·정답·가중치·외부 fold에서 다음 두 절차를 비교한다.
@@ -72,7 +78,11 @@ python src/model/nested_v3.py build --output results/leakage_audit_v3
 python tools/run_v3_audit.py --output results/leakage_audit_v3 --workers 4
 ```
 
-`audit_protocol.json`은 실행 전 코드·설정·입력 해시를 고정한다.
+로컬 일괄 실행의 `audit_protocol.json`은 실행 전 코드·설정·입력 해시를 고정한다.
+Actions 실행에서는 실행 커밋과 공통 입력 아티팩트의 `build_manifest.json`을
+함께 보존한다. [비교 실행](https://github.com/2026-2nd/26-2-4/actions/runs/45923897103),
+[점검 보고서](../reports/leakage_audit_v3/audit_report_ko.txt),
+[비교 수치](../reports/leakage_audit_v3/paired_comparison.csv)를 확인한다.
 `paired_comparison.csv`와 각 절차의 `verification.json`을 함께 검토한다.
 코드나 입력이 바뀌면 다른 출력 디렉터리로 실행한다. 이 결과로 향후 모델을
 수정할 경우 그 수정도 탐색으로 기록하고, 새 미노출 자료의 검증 규칙은

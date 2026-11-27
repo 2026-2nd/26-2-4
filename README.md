@@ -12,6 +12,11 @@
 
 학습 전용 EDA는 기존 EDA 담당 브랜치의 계산 모듈을 재사용하며, 새 산출물은 `results/nested_v3/eda_train/`에 저장한다. 과거 전체 자료 EDA와 V1/V2는 최종 모델 성능 근거로 사용하지 않는다.
 
+추가 점검: [현재 단지 정보 제외 비교와 누수 점검 보고서](reports/leakage_audit_v3/audit_report_ko.txt),
+[12개 분석표의 비교 수치](reports/leakage_audit_v3/paired_comparison.csv).
+같은 표본과 법정동 분할에서 전체 변수/현재값 제외 절차를 비교한다.
+현재값 제외 결과도 미래 예측이나 새 독립 외부 검증을 뜻하지 않는다.
+
 ## 이전 실험 읽는 순서
 
 | 순서 | 문서 | 내용 |

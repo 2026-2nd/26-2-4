@@ -1,0 +1,12 @@
+{
+  "run_url": "https://github.com/2026-2nd/26-2-4/actions/runs/45923897103",
+  "run_id": 45923897103,
+  "code_commit": "9b6821b982a76a48f80598c6533f547d0b763d6c",
+  "tests_passed": 101,
+  "frozen_files_verified": 214,
+  "train_transactions": 480007,
+  "excluded_test_dongs": 64,
+  "paired_tables": 12,
+  "independent_external_test": false,
+  "metrics_source": "GitHub Actions summary job CSV"
+}
