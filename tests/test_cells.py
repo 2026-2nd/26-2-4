@@ -84,6 +84,17 @@ def test_controls_exclude_target_window_prices_and_partial_history():
     assert result.loc['a', '토지거래허가구역_a'] == 1
     partial = cells.controls(d[d.m >= a-12], f, {'a': '2020-01', 'name': 'test'}, None, target, cfg, (a-3, a+3), t)
     assert pd.isna(partial.loc['a', '회전율'])
+    # Fixed source coverage must not change when another group's early trade
+    # is added or removed before fold splitting.
+    late = d[d.m >= a-12]
+    fixed = cells.controls(late, f, {'a': '2020-01', 'name': 'test'}, None,
+                           target, cfg, (a-3, a+3), t, observation_start=a-15)
+    unrelated = pd.DataFrame({'cell_id': ['unrelated'], 'm': [a-30], '거래금액_만원': [1]})
+    augmented = cells.controls(pd.concat([late, unrelated]), f,
+        {'a': '2020-01', 'name': 'test'}, None, target, cfg, (a-3, a+3), t,
+        observation_start=a-15)
+    pd.testing.assert_frame_equal(fixed, augmented)
+    assert fixed.loc['a', '회전율'] == pytest.approx(.02)
 
 
 def test_age_recomputed_at_start_and_future_buildings_flagged(monkeypatch):

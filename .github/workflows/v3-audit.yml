@@ -1,0 +1,94 @@
+name: V3 paired leakage audit
+on:
+  workflow_dispatch:
+  push:
+    branches: ['codex/v3-leakage-audit']
+    paths:
+      - 'src/model/nested_v3.py'
+      - 'src/cells/build_cells.py'
+      - 'tools/run_v3_audit.py'
+      - '.github/workflows/v3-audit.yml'
+permissions:
+  contents: read
+env:
+  OPENBLAS_NUM_THREADS: '1'
+  OMP_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest -q
+      - run: python tools/verify_final.py
+      - run: python src/model/nested_v3.py build --output results/leakage_audit_v3
+      - uses: actions/upload-artifact@v4
+        with:
+          name: audit-inputs
+          path: results/leakage_audit_v3/
+          if-no-files-found: error
+  evaluate:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        table: [up1_window, up1_slope, corr_window, corr_slope, up2_window, up2_slope, down_window, down_slope, rec_window, rec_slope, up3_window, up3_slope]
+        policy: [full, without_snapshot]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: audit-inputs
+          path: results/leakage_audit_v3
+      - run: python src/model/nested_v3.py evaluate --table ${{ matrix.table }} --feature-policy ${{ matrix.policy }} --output results/leakage_audit_v3
+      - uses: actions/upload-artifact@v4
+        with:
+          name: audit-${{ matrix.table }}-${{ matrix.policy }}
+          path: results/leakage_audit_v3/evaluation*/${{ matrix.table }}/
+          if-no-files-found: error
+  summary:
+    needs: evaluate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy pandas scipy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: audit-*
+          path: artifacts
+      - name: Pair and summarize
+        run: |
+          python - <<'PY'
+          import pathlib, shutil
+          out = pathlib.Path('results/leakage_audit_v3')
+          for source in pathlib.Path('artifacts').glob('audit-*-*'):
+              _, key, policy = source.name.split('-')
+              destination = out/('evaluation' if policy == 'full' else 'evaluation_without_snapshot')/key
+              predictions = list(source.rglob('outer_predictions.csv.xz'))
+              assert len(predictions) == 1, source
+              shutil.copytree(predictions[0].parent, destination)
+          PY
+          python tools/run_v3_audit.py --summarize-only
+          cat results/leakage_audit_v3/paired_comparison.csv
+      - uses: actions/upload-artifact@v4
+        with:
+          name: audit-comparison
+          path: results/leakage_audit_v3/paired_comparison.csv
+          if-no-files-found: error

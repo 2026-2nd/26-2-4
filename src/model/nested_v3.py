@@ -21,6 +21,11 @@ import followup as f
 ROOT = v1.ROOT
 OUT = ROOT / 'results' / 'nested_v3'
 SEED = 20261127
+FEATURE_POLICY = 'full'
+# Conservative ablation, fixed before inspecting its scores. Missing indicators
+# and the household-dependent turnover control must disappear as well.
+SNAPSHOT_FEATURES = ('세대수', '세대당_주차대수', '난방방식', '복도유형',
+                     '시공사_상위10', '단지명_상위10브랜드', '연식_개월_a', '재건축연한', '회전율')
 OUTER, INNER = 5, 3
 # Fixed before evaluation; do not reuse V1 winners or tune on outer predictions.
 VARIANTS = ('baseline', 'quality', 'extended')
@@ -80,6 +85,11 @@ def fit_design(train, other, variant):
             frame[parking+'_missing'] = source[parking+'_missing']
     if list(x.columns) != list(z.columns) or cats != zcats:
         raise ValueError('Feature schema differs')
+    if FEATURE_POLICY == 'without_snapshot':
+        drop = [c for name in SNAPSHOT_FEATURES for c in (name, name+'_missing') if c in x]
+        x, z = x.drop(columns=drop), z.drop(columns=drop)
+        cats = [c for c in cats if c in x]
+        zero_as_missing = False
     return x, z, cats, zero_as_missing
 
 
@@ -234,7 +244,8 @@ def build():
         end = (end[0],min(end[1],cutoff))
         period = (period[0],min(period[1],cutoff))
         features = c.features_at(clean,static,r,cfg,feat)
-        features = features.join(c.controls(clean,features,r,previous,target,cfg,start,tohuh))
+        features = features.join(c.controls(clean,features,r,previous,target,cfg,start,tohuh,
+                                            observation_start=c.month('2017-01')))
         # Fixed observation start, not a statistic estimated from validation data.
         if start[0]-cfg['controls']['turnover_months'] < c.month('2017-01'):
             features['회전율'] = np.nan
@@ -327,7 +338,7 @@ def evaluate(key):
     final=search(d,'final',key,eda)
     all_scores.append(final.assign(stage='final'))
     family,variant,i=choose(final)
-    folder=OUT/'evaluation'/key
+    folder=OUT/('evaluation' if FEATURE_POLICY == 'full' else 'evaluation_without_snapshot')/key
     folder.mkdir(parents=True,exist_ok=False)
     v1.save_csv(pd.DataFrame(eda),folder/'train_fold_eda.csv')
     v1.save_csv(pd.concat(all_scores,ignore_index=True),folder/'inner_scores.csv')
@@ -339,7 +350,9 @@ def evaluate(key):
     metrics=[dict(table=key,model=m,cells=len(d),**v1.metric_values(d.y,p,d.weight))
              for m,p in predictions.items()]
     v1.save_csv(pd.DataFrame(metrics),folder/'metrics.csv')
-    v1.save_json(dict(table=key,family=family,variant=variant,params=GRID[family][i],
+    v1.save_json(dict(table=key,feature_policy=FEATURE_POLICY,
+                      excluded_features=list(SNAPSHOT_FEATURES) if FEATURE_POLICY != 'full' else [],
+                      family=family,variant=variant,params=GRID[family][i],
                       train_cells=len(d),outer_folds=OUTER,inner_folds=INNER,
                       independently_unseen_test=False,
                       note='Selected on training dongs; no fresh holdout available.'),folder/'final_choice.json')
@@ -348,10 +361,15 @@ def evaluate(key):
 
 
 def main():
+    global FEATURE_POLICY, OUT
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('stage',choices=['build','evaluate'])
     p.add_argument('--table')
+    p.add_argument('--feature-policy', choices=['full', 'without_snapshot'], default='full')
+    p.add_argument('--output', type=pathlib.Path, default=OUT,
+                   help='Separate run directory; never overwrite historical results.')
     a=p.parse_args()
+    FEATURE_POLICY, OUT = a.feature_policy, a.output
     with threadpool_limits(limits=1):
         if a.stage=='build': build()
         else:

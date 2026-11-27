@@ -190,7 +190,7 @@ def features_at(d, static, regime, cfg, feature_cfg):
     return f
 
 
-def controls(d, features, regime, previous, target, cfg, start, tohuh):
+def controls(d, features, regime, previous, target, cfg, start, tohuh, observation_start=None):
     a = month(regime['a'])
     cc = cfg['controls']
     lower, upper = cc['price_lookback_months']
@@ -205,7 +205,8 @@ def controls(d, features, regime, previous, target, cfg, start, tohuh):
     counts = history.groupby('cell_id').size().reindex(out.index).fillna(0)
     out['회전율'] = counts / features['세대수'].where(features['세대수'] > 0)
     # A zero count is not zero turnover if the full observation window is unavailable.
-    out['turnover_history_complete'] = start[0]-cc['turnover_months'] >= d.m.min()
+    history_start = d.m.min() if observation_start is None else observation_start
+    out['turnover_history_complete'] = start[0]-cc['turnover_months'] >= history_start
     out.loc[~out.turnover_history_complete, '회전율'] = np.nan
     out['직전국면_y'] = np.nan
     if previous:
