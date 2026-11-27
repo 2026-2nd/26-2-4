@@ -164,6 +164,29 @@ def verify_saved(folder, expected_groups, excluded):
                       independent_external_test=False),folder/'verification.json')
 
 
+def run_train_eda(raw, train_groups, excluded_groups, destination):
+    """Reuse the EDA branch computations only AFTER filtering training rows."""
+    groups = set(raw['자치구']+'|'+raw['법정동'])
+    if not groups or not groups <= train_groups or groups & excluded_groups:
+        raise ValueError('EDA received non-training rows')
+    sys.path.insert(0, str(ROOT/'src'))
+    from eda import load, run_eda
+    regimes = load.load_regimes()
+    frame = load.prepare(raw, regimes)
+    frame.attrs['원본_열'] = list(raw.columns)
+    tables, summary = run_eda.compute(frame, regimes)
+    if summary['데이터']['행'] != len(raw):
+        raise ValueError('EDA row count differs')
+    run_eda.write_tables(tables, summary, destination)
+    v1.save_json(dict(source_branch='eda/exploratory-analysis',
+                      source_commit='16a267e76381bd6e4f20007919e0066d51034c62',
+                      source_module_sha256={p.name:v1.sha(p) for p in sorted((ROOT/'src/eda').glob('*.py'))},
+                      rows=len(raw),dongs=len(groups),excluded_test_rows=0,
+                      table_count=len(tables),scope='train only',
+                      whole_data_eda_used_as_model_input=False),
+                 destination/'provenance.json')
+
+
 def build():
     """Split raw rows FIRST, then construct labels/features without excluded dongs."""
     sys.path.insert(0, str(ROOT/'src/cells'))
@@ -198,6 +221,7 @@ def build():
                       official_index_last_month=str(pd.Period(ordinal=cutoff,freq='M')),
                       official_index_sha256=v1.sha(official_path),
                       raw_source_sha256=v1.sha(ROOT/cfg['source'])), OUT/'build_manifest.json')
+    run_train_eda(raw,train,excluded,OUT/'eda_train')
     d = c.prepare(raw, target, index)
     clean = d[d.exclusion_reason.eq('')].copy()
     static, _ = c.static_features(clean, feat)

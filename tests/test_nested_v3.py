@@ -42,3 +42,9 @@ def test_fixed_grid_and_tie_order():
     s=pd.DataFrame([dict(family='ridge',variant='baseline',grid_index=0,RMSE=1.),
                     dict(family='catboost',variant='extended',grid_index=1,RMSE=1.)])
     assert n.choose(s)==('ridge','baseline',0)
+
+
+def test_full_eda_rejects_held_out_dongs(tmp_path):
+    raw=pd.DataFrame({'자치구':['A','A'],'법정동':['train','test']})
+    with pytest.raises(ValueError,match='non-training'):
+        n.run_train_eda(raw,{'A|train'},{'A|test'},tmp_path)
